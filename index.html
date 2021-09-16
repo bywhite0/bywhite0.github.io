@@ -1,0 +1,307 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+<title>白影的鸽子窝</title>
+</head>
+<body class="mdui-theme-primary-teal mdui-theme-accent-teal mdui-theme-layout-auto mdui-theme-color">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
+<link rel="stylesheet" href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css">
+<script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
+<!script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"><!/script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+<link rel="stylesheet" href="assets/index.css">
+<div class="mdui-fab-wrapper" id="exFab" mdui-fab="{trigger:'hover'}">
+<button class="mdui-fab mdui-ripple mdui-color-theme"><i class="mdui-icon material-icons">more_horiz</i><i class="mdui-icon mdui-fab-opened material-icons">close</i></button>
+<div class="mdui-fab-dial">
+<button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-theme"><i class="mdui-icon material-icons" onclick="$('*').animate({scrollTop: 0}, 500);">arrow_upward</i></button>
+<button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-theme" id="code" onclick="devtEruda()"><i class="mdui-icon material-icons">code</i></button>
+<button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-theme " mdui-dialog="{target: '#jumpTo'}" ><i class="mdui-icon material-icons">open_in_browser</i></button>
+<button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-theme" onclick="checkRight()" ><i class="mdui-icon material-icons">adjust</i></button>
+</div>
+</div>
+<div class="mdui-dialog" id="jumpTo">
+<div class="mdui-dialog-title">口令</div>
+<div class="mdui-container">
+<div class="mdui-textfield mdui-textfield-floating-label"><label class="mdui-textfield-label">输入口令</label><input class="mdui-textfield-input" type="text" spellcheck="false" id="command"><div class="mdui-textfield-error">无效口令</div></div>
+</div>
+<div class="mdui-dialog-actions">
+<button class="mdui-btn mdui-ripple" mdui-dialog-cancel>取消</button>
+<button class="mdui-btn mdui-ripple" id="chkCmd" mdui-dialog-confirm>确定</button>
+</div>
+</div>
+<div class="mdui-toolbar mdui-color-theme">
+<button mdui-drawer="{target: '#drawer'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">menu</i></button>
+<span class="mdui-typo-title" style="margin-left:0px">白影的鸽子窝</span>
+<div class="mdui-toolbar-spacer"></div>
+<span style="float:right" id="tms"></span>
+</div>
+<!div id="you" class="mdui-container-fluid"></div>
+<div class="mdui-panel" mdui-panel>
+<div class="mdui-panel-item" style="margin:6px">
+<div class="mdui-panel-item-header">
+<div class="mdui-panel-item-title">公告</div>
+<i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+</div>
+<div class="mdui-panel-item-body">
+<ul class="mdui-list mdui-list-dense">
+<li class="mdui-list-item"><div class="mdui-list-item-content"><div class="mdui-list-item-text">  ● 点击左上角菜单按钮畅游本站<br />● 也试试右下角的按钮叭~</div></div></li>
+</ul>
+</div>
+</div>
+</div>
+	<div class="mdui-panel" mdui-panel>
+		<div class="mdui-panel-item" style="margin:6px"><div class="mdui-panel-item-header"><div class="mdui-panel-item-title">近期更新</div><div class="mdui-panel-item-summary">当前版本 v2.3.0</div><i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
+<div class="mdui-panel-item-body">
+<ul class="mdui-list mdui-list-dense">
+<li class="mdui-list-item mdui-ripple">
+<div class="mdui-list-item-content">
+<div class="mdui-list-item-title">v2.3.0 <small class="mdui-typo sm">2021.08.26-09.12</small></div>
+<div class="mdui-list-item-text">
+2021.09.12<br />
+  ● 播放器兼容深色模式<br />
+2021.09.11<br />
+  ● 全站统一主题色(部分除外)<br />
+  ● 「能不能好好说话」部分样式调整<br />
+  ● 适配MDUI v1.0.2<br />
+  ● 修复选项卡无法使用id切换的bug<br />
+2021.09.08<br />
+  ● 新增「初中数学基础知识点总结」<br />
+2021.09.06<br />
+  ● 子页面导航栏部分样式调整<br />
+2021.09.05<br />
+  ● 口令模块实装<br />
+  ● 原“彩蛋模块”整合到口令模块<br />
+  ● 侧边栏优化<br />
+  ● 侧边栏新增渲染时长计算<br />
+  ● 主页HTML结构调整<br />
+  ● 播放器优化<br />
+2021.08.30<br />
+  ● 新增邮箱订阅功能<br />
+2021.08.29<br />
+  ● 「CNvalues」兼容深色模式<br />
+2021.08.26<br />
+  ● 主页新增浮动操作按钮<br />
+  ● 主页“彩蛋模块”实装<br />
+  ● 解决Without You“Fuck”被消音的问题
+</div></div></li>
+<li class="mdui-list-item mdui-ripple">
+<div class="mdui-list-item-content">
+<div class="mdui-list-item-title">v2.2.0 <small class="mdui-typo sm">2021.08.15-17</small></div>
+<div class="mdui-list-item-text">
+2021.08.17<br />
+  ● 「音乐外链生成工具」上线<br />
+  ● 修复「360°文字时钟」显示错位的bug<br />
+  ● 修复主页「一言」加载错误的bug<br />
+  ● 修复评论无法滚动的bug<br />
+2021.08.15<br />
+  ● 上线几个游戏相关工具（外部链接）<br />
+  ● 主页移除主题设置<br />
+  ● 主页菜单移至侧边栏<br />
+  ● 侧边栏排版优化<br />
+  ● 修复深色模式下侧边栏样式的bug
+</div></div></li>
+</ul>
+</div></div></div>
+	<div class="mdui-panel" mdui-panel>
+		<div class="mdui-panel-item" style="margin:6px"><div class="mdui-panel-item-header"><div class="mdui-panel-item-title">待办</div><i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
+<div class="mdui-panel-item-body">
+<label class="mdui-checkbox">
+<input type="checkbox" checked disabled/>
+<i class="mdui-checkbox-icon"></i>播放器样式调整
+</label>
+<br />
+<label class="mdui-checkbox">
+<input type="checkbox" disabled/>
+<i class="mdui-checkbox-icon"></i>修复深色模式bug
+</label>
+<br />
+<label class="mdui-checkbox">
+<input type="checkbox" disabled/>
+<i class="mdui-checkbox-icon"></i>文本转语音工具
+</label>
+
+</div></div></div>
+	<div class="mdui-panel" mdui-panel>
+		<div class="mdui-panel-item" style="margin:6px">
+			<div class="mdui-panel-item-header"><div class="mdui-panel-item-title">开发进度</div><i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
+			<div class="mdui-panel-item-body">
+				<div class="mdui-container">
+					<div class="mdui-row">
+						<div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '主站功能的完善进度'}">
+							<div class="mdui-container">
+								<div class="mdui-row mdui-valign"><div class="mdui-col-xs-4"><div class="progress-ti">主站建设</div></div><div class="mdui-col-xs-8"><div class="mdui-progress"><div class="mdui-progress-determinate" style="width: 40%;"></div></div></div>
+								</div>
+							</div>
+						</div>
+						<div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '主站资源的兼容进度'}">
+							<div class="mdui-container">
+								<div class="mdui-row mdui-valign"><div class="mdui-col-xs-4"><div class="progress-ti">兼容性</div></div><div class="mdui-col-xs-8"><div class="mdui-progress"><div class="mdui-progress-determinate" style="width: 45%;"></div></div></div>
+								</div>
+							</div>
+						</div> 						                                                <div class="mdui-col-xs-12 mdui-col-sm-6 mdui-col-md-4" mdui-tooltip="{content: '深色模式兼容进度'}">
+							<div class="mdui-container">
+								<div class="mdui-row mdui-valign"><div class="mdui-col-xs-4"><div class="progress-ti">深色兼容</div></div><div class="mdui-col-xs-8"><div class="mdui-progress"><div class="mdui-progress-determinate" style="width: 64%;"></div></div></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="mdui-panel" mdui-panel>
+<div class="mdui-panel-item" style="margin:6px">
+<div class="mdui-panel-item-header">
+<div class="mdui-panel-item-title">播放器</div>
+<i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+</div>
+<div class="mdui-panel-item-body" style="padding:0px">
+<div class="mdui-valign mdui-center mdui-hidden">
+<button onclick="ap.play()" class="mdui-btn mdui-btn-icon mdui-color-theme mdui-ripple"><i class="mdui-icon material-icons">play_arrow</i></button>
+<button onclick="ap.pause()" class="mdui-btn mdui-btn-icon mdui-m-x-1 mdui-color-theme mdui-ripple"><i class="mdui-icon material-icons">pause</i></button>
+</div>
+<div id="you"></div>
+<!meting-js server="tencent" type="playlist" id="7730318960"></meting-js>
+
+</div>
+</div>
+</div>
+<div class="mdui-panel" mdui-panel>
+<div class="mdui-panel-item" style="margin:6px">
+<div class="mdui-panel-item-header">
+<div class="mdui-panel-item-title">一言</div>
+<i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+</div>
+<div class="mdui-panel-item-body"><iframe src="hitokoto.html" id="hitokoto_pan" style="border:0px;" width=100%></iframe>
+<div class="mdui-panel-item-actions">
+<button class="mdui-btn mdui-ripple cb-btn"  data-clipboard-target="#hitokoto_output" onclick="hitokotoCopy()">复制</button>
+<button class="mdui-btn mdui-ripple" onclick="document.getElementById('hitokoto_pan').contentWindow.location.reload(true);">再来一条</button>
+</div>
+</div>
+</div>
+<textarea id="hitokoto_output" style="position: absolute;top: 0;left: 0;opacity: 0;z-index: -10;"></textarea>
+<div class="mdui-drawer mdui-drawer-full-height " id="drawer">
+<div class="mdui-toolbar">
+<span class="mdui-typo-title" >菜单</span>
+<div class="mdui-toolbar-spacer"></div>
+<button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer-close><i class="mdui-icon material-icons">close</i></button>
+</div>
+<div class="mdui-list-item">本次渲染用时<span id="LdT"></span>ms</div>
+<script>
+window.onload = function() {$("#LdT").html(window.performance.timing.domComplete - window.performance.timing.domLoading)}
+</script>
+<div class="mdui-list" mdui-collapse="{accordion: true}" >
+<li class="mdui-collapse-item">
+<div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">history</i></div><div class="mdui-list-item-content">倒数日</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
+<ul class="mdui-collapse-item-body mdui-list">
+<li class="mdui-list-item"><div class="mdui-list-item-title" ><span class="mdui-list-item-content">搭鸽子窝的第<script>
+var a = new Date ("03/24/2020").getTime(),
+n = new Date ().getTime(),
+t = n - a,
+m = Math. floor (t / (1000 * 60 * 60 * 24));
+document.write(+m)
+</script>天</span></div></li>
+<li class="mdui-list-item mdui-hidden" id="love"><div class="mdui-list-item-title" ><span class="mdui-list-item-content">他们相恋了<script>
+var a = new Date ("07/21/2021").getTime(),
+n = new Date ().getTime(),
+t = n - a,
+m = Math. floor (t / (1000 * 60 * 60 * 24));
+document.write(+m)
+</script>天</span></div></li>
+</ul></li>
+<div class="mdui-subheader"><i class=" mdui-icon material-icons ">public</i>站点</div>
+<a href="https://bywhite.wodemo.net" class="mdui-list-item mdui-ripple "><div class="mdui-list-item-avatar" style="background-color:#0000"><img src="http://q1.qlogo.cn/g?b=qq&nk=3240558932&s=640&t=1" id="loveAvatar" class="mdui-hidden"></div><div class="mdui-list-item-content">鸽子窝</div></a>
+<a href="https://bywforu.wodemo.net" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar" style="background-color:#0000"><img src="http://q1.qlogo.cn/g?b=qq&nk=1842160491&s=640&t=1" id="loveAvatar" class="mdui-hidden"></div><div class="mdui-list-item-content">时空隧道<small class="sm" style="font-size:10px">(建设中)</small></div></a>
+<a href="https://github.com/bywhite0" target="_blank" class="mdui-list-item mdui-ripple">
+<div class="mdui-list-item-avatar">
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z"></path></svg></div><div class="mdui-list-item-content">我的GitHub</div>
+</a>
+<div class="mdui-subheader"><i class="mdui-icon material-icons">widgets</i>小组件</div>
+<li class="mdui-collapse-item">
+<div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">access_time</i></div><div class="mdui-list-item-content">时钟</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
+<ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+<a href="https://bywhite.wodemo.net/watchclock" class="mdui-list-item mdui-ripple">仿Watch时钟</a>
+<a href="https://bywhite.wodemo.net/slideclock" class="mdui-list-item mdui-ripple">滑动时钟</a>
+<a href="https://bywhite.wodemo.net/scrolltime" class="mdui-list-item mdui-ripple">滚动时间</a>
+<a href="https://bywhite.wodemo.net/countdown" class="mdui-list-item mdui-ripple">倒数时钟</a>
+<a href="https://bywhite.wodemo.net/360clock" class="mdui-list-item mdui-ripple">360°文字时钟</a>
+<a href="https://bywhite.wodemo.net/textclock" class="mdui-list-item mdui-ripple">英文时钟</a> </ul>
+</li>
+<div class="mdui-subheader"><i class="mdui-icon material-icons">build</i>工具</div>
+<li class="mdui-collapse-item">
+<div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">games</i></div><div class="mdui-list-item-content">游戏相关</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
+<ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+<a href="https://bestdori.com" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Bestdori!<div class="mdui-list-item-text">BanG Dream!少女乐团派对!的<br />最佳资源库</div></div></a>
+<a href="https://bandoristation.com" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Bandori车站<div class="mdui-list-item-text">BanG Dream!少女乐团派对!的<br />房间号收集平台</div></div></a>
+<a href="https://penguin-stats.cn" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">企鹅物流数据统计<div class="mdui-list-item-text">明日方舟掉率统计</div></div></a>
+<a href="https://616.sb" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Konmai Academy<div class="mdui-list-item-text">「纯净的音游下载站」</div></div></a>
+<a href="https://tool.sonolus.reikohaku.fun" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Sonolus工具站<div class="mdui-list-item-text">Sonolus的工具聚合站</div></div></a>
+</ul>
+</li>
+<li class="mdui-collapse-item">
+<div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">audiotrack</i></div><div class="mdui-list-item-content">音乐</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
+<ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+<a href="https://bywhite.wodemo.net/musiclink" class="mdui-list-item mdui-ripple">音乐外链生成工具</a>
+</ul>
+</li>
+<li class="mdui-collapse-item">
+<div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">school</i></div><div class="mdui-list-item-content">学习</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
+<ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+<a href="https://bywhite.wodemo.net/m-maths" class="mdui-list-item mdui-ripple">初中数学基础知识点总结</a>
+</ul>
+</li>
+<li class="mdui-collapse-item">
+<div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">folder</i></div><div class="mdui-list-item-content">其他</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
+<ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+<a href="https://bywhite.wodemo.net/cnvalues" class="mdui-list-item mdui-ripple">CN Values意识形态测试</a>
+<a href="https://cdn.jsdelivr.net/gh/YuriMiller/CompleteSuicideManual-Zh_CN@master/CompleteSuicideManual-Zh_CN.pdf" class="mdui-list-item mdui-ripple mdui-hidden">完全自杀手册</a>
+<a href="https://bywhite.wodemo.net/nbnhhsh" class="mdui-list-item mdui-ripple "><div class="mdui-list-item-content">能不能好好说话？<div class="mdui-list-item-text">拼音缩写释义查询工具</div></div></a>
+</ul>
+</li>
+<div class="mdui-subheader"><i class=" mdui-icon material-icons ">folder</i>资源</div>
+<li class="mdui-collapse-item">
+<div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">video_library</i></div><div class="mdui-list-item-content">视频</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
+<ul class="mdui-collapse-item-body mdui-list">
+<a href="https://bywhite.wodemo.net/rickroll" class="mdui-list-item mdui-ripple">Never Gonna Give You Up</a>
+<a href="https://bywhite.wodemo.net/daisuke" class="mdui-list-item mdui-ripple">Daisuke</a>
+<a href="https://bywhite.wodemo.net/avicii/tribute" class="mdui-list-item mdui-ripple">Avicii Tribute Concert</a>
+</ul>
+</li>
+<div class="mdui-subheader"><i class=" mdui-icon material-icons ">more_horiz</i>其他</div>
+<a href="https://s.wodemo.net/admin" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i></div><div class="mdui-list-item-content">用户中心</div></a>
+<a href="https://s.wodemo.net/notification" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">notifications</i></div><div class="mdui-list-item-content">消息通知<span class="wo-n-count-num" style="float:right"></span></div></a>
+<a href="https://bywhite.wodemo.net/sub" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">rss_feed</i></div><div class="mdui-list-item-content">订阅</div></a>
+<a href="https://wodemo.net/latest" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">public</i></div><div class="mdui-list-item-content">别人的网页</div></a>
+<li class="mdui-divider"></li>
+<a href="https://mdui.org" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">view_compact</i></div><div class="mdui-list-item-content">MDUI</div></a>
+<a href="https://aplayer.js.org/#/zh-Hans" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i></div><div class="mdui-list-item-content">APlayer中文文档</div></a>
+<a href="https://clipboardjs.com" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">content_paste</i></div><div class="mdui-list-item-content">Clipboard.js</div></a>
+<a href="https://hitokoto.cn" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><img src="https://cdn.jsdelivr.net/gh/bywhite0/image@main/luotianyi.JPG" ></div><div class="mdui-list-item-content">一言网</div></a>
+<div class="mdui-subheader mdui-hidden"><i class=" mdui-icon material-icons ">link</i>友链</div>
+</div>
+</div>
+<script defer="defer">
+var l=0,y=0;
+function checkRight(){
+	l=l+1;
+	y=l;
+	$('#tms').html(l);
+	if(l == 5){
+		mdui.snackbar({
+			message:"在某个对话框输入ly试试~",
+			timeout: 5000,
+			position: "top",
+			closeOnOutsideClick: false
+		});
+	}else{
+		l = y;
+	};
+}
+</script>
+<script src="assets/index.js"></script>
+</body>
+</html>
