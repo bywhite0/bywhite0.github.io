@@ -2,6 +2,6 @@
 .sm{opacity:.7}
 .aplayer{font-family:Roboto,Arial,Helvetica,sans-serif !important;box-shadow:#0000;background:#0000}
 .aplayer.aplayer-body{position:static;margin:0;z-index:99;background:#0000;padding-right:18px;transition:all .3s ease;max-width:400px}
-.aplayer-lrc,.aplayer-lrc:before,.aplayer-lrc:after{display:block;position:fixed !important;bottom:0px;left:0;right:0;margin:0;z-index:99;pointer-events:none;text-shadow:#fff8 0.5px 0.5px 0.5px;background:#0000 !important}
+.aplayer-lrc,.aplayer-lrc:before,.aplayer-lrc:after{display:block;position:fixed !important;bottom:0px;left:0;right:0;margin:0;z-index:99;pointer-events:none;text-shadow:#fff8 0.5px 0.5px 0.5px;background:#aaa1 !important}
 aplayer-list ol li:hover{background:#eee}
 .aplayer .aplayer-list ol li.aplayer-list-light{background:#0000}
