@@ -8,13 +8,17 @@
 <meta content="yes" name="apple-mobile-web-app-capable">
 <link rel="shortcut icon" href="https://q1.qlogo.cn/g?b=qq&nk=3240558932&s=640&t=1" type="image/x-icon" />
 </head>
+
 <body class="mdui-theme-primary-teal mdui-theme-accent-teal mdui-theme-layout-auto mdui-theme-color">
-<title>{{ title }}</title>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
+<script src="assets/index.js"></script>
+<link rel="stylesheet" href="assets/index.css" />
+<title>白影的鸽子窝</title>
 <script src="https://cdn.jsdelivr.net/npm/vue@3.2.12/dist/vue.global.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-router@4.0.11/dist/vue-router.global.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
-<!script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></!script>
 <div class="mdui-fab-wrapper" id="exFab" mdui-fab="{trigger:'hover'}">
 <button class="mdui-fab mdui-ripple mdui-color-theme"><i class="mdui-icon material-icons">more_horiz</i><i class="mdui-icon mdui-fab-opened material-icons">close</i></button>
 <div class="mdui-fab-dial">
@@ -36,13 +40,19 @@
 </div>
 <div class="mdui-toolbar mdui-color-theme">
 <button mdui-drawer="{target: '#drawer'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">menu</i></button>
-<span class="mdui-typo-title" style="margin-left:0px">{{ title }}</span>
+<span class="mdui-typo-title" style="margin-left:0px">白影的鸽子窝</span>
 <div class="mdui-toolbar-spacer"></div>
 <span style="float:right" id="tms"></span>
+<button mdui-drawer="{target: '#player'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">play_circle_outline</i></button>
 </div>
-<div is="vue:stage"></div>
+<div id="app">
+<router-view v-slot="{ Component }">
+  <transition name="slide-down">
+    <component :is="Component" />
+  </transition>
+</router-view>
 
-<div class="mdui-drawer mdui-drawer-full-height " id="drawer">
+<div class="mdui-drawer" id="drawer">
 <div class="mdui-toolbar">
 <span class="mdui-typo-title" >菜单</span>
 <div class="mdui-toolbar-spacer"></div>
@@ -71,12 +81,14 @@ m = Math. floor (t / (1000 * 60 * 60 * 24));
 document.write(+m)
 </script>天</span></div></li>
 </ul></li>
+<div class="mdui-subheader"><i class=" mdui-icon material-icons ">play_circle_outline</i>播放器</div>
+<div class="mdui-list-item">暂时无法使用，等待修复</div>
 <div class="mdui-subheader"><i class=" mdui-icon material-icons ">public</i>站点</div>
-<a href="/" class="mdui-list-item mdui-ripple "><div class="mdui-list-item-avatar" style="background-color:#0000"><img src="http://q1.qlogo.cn/g?b=qq&nk=3240558932&s=640&t=1" id="loveAvatar" class="mdui-hidden"></div><div class="mdui-list-item-content">鸽子窝</div></a>
+<router-link to="/" onclick="rf()" class="mdui-list-item mdui-ripple " mdui-drawer-close><div class="mdui-list-item-avatar" style="background-color:#0000"><img src="http://q1.qlogo.cn/g?b=qq&nk=3240558932&s=640&t=1" id="loveAvatar" class="mdui-hidden"></div><div class="mdui-list-item-content">鸽子窝</div></router-link>
 <a href="https://bywforu.wodemo.net" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar" style="background-color:#0000"><img src="http://q1.qlogo.cn/g?b=qq&nk=1842160491&s=640&t=1" id="loveAvatar" class="mdui-hidden"></div><div class="mdui-list-item-content">时空隧道<small class="sm" style="font-size:10px">(建设中)</small></div></a>
 <a href="https://github.com/bywhite0" target="_blank" class="mdui-list-item mdui-ripple">
-<div class="mdui-list-item-avatar">
-<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z"></path></svg></div><div class="mdui-list-item-content">我的GitHub</div>
+<div class="mdui-list-item-avatar" style="background-color:#0000">
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon"><path fill-rule="evenodd" clip-rule="evenodd" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z"></path></svg></div><div class="mdui-list-item-content">GitHub</div>
 </a>
 <div class="mdui-subheader"><i class="mdui-icon material-icons">widgets</i>小组件</div>
 <li class="mdui-collapse-item">
@@ -124,8 +136,8 @@ document.write(+m)
 <li class="mdui-collapse-item">
 <div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">video_library</i></div><div class="mdui-list-item-content">视频</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
 <ul class="mdui-collapse-item-body mdui-list">
-<a href="/rickroll" class="mdui-list-item mdui-ripple">Never Gonna Give You Up</a>
-<a href="/daisuke" class="mdui-list-item mdui-ripple">Daisuke</a>
+<router-link to="/rickroll" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>Never Gonna Give You Up</router-link>
+<router-link to="/daisuke" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>Daisuke</router-link>
 <a href="/avicii/tribute" class="mdui-list-item mdui-ripple">Avicii Tribute Concert</a>
 </ul>
 </li>
@@ -136,16 +148,84 @@ document.write(+m)
 <a href="https://wodemo.net/latest" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">public</i></div><div class="mdui-list-item-content">别人的网页</div></a>
 <li class="mdui-divider"></li>
 <a href="https://mdui.org" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">view_compact</i></div><div class="mdui-list-item-content">MDUI</div></a>
-<a href="https://aplayer.js.org/#/zh-Hans" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i></div><div class="mdui-list-item-content">APlayer中文文档</div></a>
-<a href="https://clipboardjs.com" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">content_paste</i></div><div class="mdui-list-item-content">Clipboard.js</div></a>
+<a href="https://v3.cn.vuejs.org" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar" style="background-color:#0000"><img src="https://v3.cn.vuejs.org/logo.png" ></div><div class="mdui-list-item-content">Vue.js</div></a>
+<a href="https://clipboardjs.com.cn" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">content_paste</i></div><div class="mdui-list-item-content">Clipboard.js</div></a>
 <a href="https://hitokoto.cn" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><img src="https://cdn.jsdelivr.net/gh/bywhite0/image@main/luotianyi.JPG" ></div><div class="mdui-list-item-content">一言网</div></a>
 <div class="mdui-subheader mdui-hidden"><i class=" mdui-icon material-icons ">link</i>友链</div>
 </div>
 </div>
+</div>
+<div class="mdui-drawer mdui-drawer-right" id="player">
+<div class="mdui-toolbar mdui-color-theme">
+<button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer-close><i class="mdui-icon material-icons">chevron_right</i></button>
+<span class="mdui-typo-title" style="margin:0px">播放器</span>
+<div class="mdui-toolbar-spacer"></div>
+</div>
+<script src="assets/player.js"></script>
+<link rel="stylesheet" href="assets/iconfont.css">
+<link rel="stylesheet" href="assets/player.css" />
+<!-- 播放器 -->
+<div class="music-player">
+	<!-- audio标签 -->
+	<audio class="music-player__audio" ></audio>
+	<!-- 播放器主体 -->
+	<div class="music-player__main">
+		<!-- 模糊背景 -->
+		<div class="music-player__blur"></div>
+		<!-- 唱片 -->
+		<div class="music-player__disc">
+			<!-- 唱片图片 -->
+			<div class="music-player__image">
+				<img width="100%" src="" alt="">
+			</div>
+			<!-- 指针 -->
+			<div class="music-player__pointer"><img width="100%" src="./assets/images/player/cd_tou.png" alt=""></div>
+		</div>
+		<!-- 控件主体 -->
+		<div class="music-player__controls">
+			<!-- 歌曲信息 -->
+			<div class="music__info">
+				<h3 class="music__info--title">...</h3>
+				<p class="music__info--singer">...</p>
+			</div>
+			<!-- 控件... -->
+			<div class="player-control">
+				<div class="player-control__content">
+					<div class="player-control__btns">
+						<div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
+						<div class="player-control__btn player-control__btn--play"><i class="iconfont icon-play"></i></div>
+						<div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
+						<div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-loop"></i></div>
+					</div>
+					<div class="player-control__volume">
+						<div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
+						<div class="control__volume--progress progress"></div>
+					</div>
+				</div>
+
+				<!-- 歌曲播放进度 -->
+				<div class="player-control__content">
+					<div class="player__song--progress progress"></div>
+					<div class="player__song--timeProgess nowTime">00:00</div>
+					<div class="player__song--timeProgess totalTime">00:00</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+	<!-- 歌曲列表 -->
+	<div class="music-player__list">
+		<ul class="music__list_content">
+			<!-- <li class="music__list__item play">123</li>
+			<li class="music__list__item">123</li>
+			<li class="music__list__item">123</li> -->
+		</ul>
+	</div>
+</div>
+</div>
 <script src="vue/homepage.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script><link rel="stylesheet" href="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.css" /><script src="https://cdn.bootcss.com/aplayer/1.10.1/APlayer.min.js"></script>
-<script src="assets/index.js"></script>
-<link rel="stylesheet" href="assets/index.css" />
+<script src="vue/videos.js"></script>
 <script defer="defer">
 var l=0,y=0;
 function checkRight(){
@@ -162,6 +242,26 @@ function checkRight(){
 	}else{
 		l = y;
 	};
+}
+</script>
+<script>
+const routes = [
+  { path: '/', component: home },
+  { path: '/rickroll', component: rickroll },
+  { path: '/daisuke', component: daisuke },
+]
+const router = VueRouter.createRouter({
+history: VueRouter.createWebHashHistory(),
+  routes, 
+})
+const app = Vue.createApp({})
+app.use(router)
+
+app.mount('#app')
+
+var stage = document.getElementById("app");
+stage.onload = function(){
+mdui.$("*").mutation()
 }
 </script>
 </body>

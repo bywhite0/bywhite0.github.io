@@ -1,0 +1,2 @@
+const rickroll = {template:`<video controls src="http://res-video.licolico.cn/1048577/380301/9467925/playlist.m3u8" class="mdui-video-fluid" autoplay="autoplay">`}
+const daisuke = {template:`<video src="https://daisu.ke/daisuke.mp4" controls autoplay="autoplay" class="mdui-video-fluid">`}
