@@ -1,81 +1,3 @@
-class Util {
-    constructor() {
-        if (Util.instance) return Util.instance;
-        return this.getInstance(...arguments);
-    }
-
-    getInstance() {
-        var instance = {
-            /*
-             *   formatTime 格式化时间（s）为 hour:minutes:seconds
-             *   @params  time  required number (s)
-             *   
-             *   return hour:minutes:seconds string
-             */
-
-            formatTime(time) {
-                //没有传time的时候
-                if (time === undefined) {
-                    this.handlerError(123, {
-                        method: 'formate',
-                        param: 'time'
-                    });
-                    return false;
-                }
-                let _time = Math.floor(time);
-                let _minutes = Math.floor(_time / 60);
-                let _hours = Math.floor(_minutes / 60);
-                let _seconds = _time - (_minutes * 60);
-
-                return (_hours ? this.fillZero(_hours) + ':' : '') + this.fillZero(_minutes - (_hours * 60)) + ':' + this.fillZero(_seconds);
-            },
-            /*
-             *   fillZero 为小于10的数字补0
-             *   @params  num  required number
-             *   return '01'.. string
-             */
-            fillZero(num) {
-                //当没有传time的时候
-                if (num === undefined) {
-                    this.handlerError(123, {
-                        method: 'fillZero',
-                        param: 'num'
-                    });
-                    return false;
-                }
-                //这个函数只是让我们在渲染/显示的时候有一个不同的效果，不要操作原数据
-                return num > 9 ? num : '0' + num;
-            },
-            errors: {
-                123: ({
-                    method,
-                    param
-                }) => {
-                    return method + 'function need a param ' + param;
-                }
-            },
-            handlerError(code, options) { //处理报错
-                console.error('[until error] message' + this.errors[code](options));
-            }
-        }
-        Util.instance = instance;
-        return instance;
-    }
-}
-
-//为了这个工具以后在模块化环境中依然可以使用，需要判断一下，如果是在模块化环境，就将其暴露出去
-//commonJs
-if (typeof module === 'object' && typeof module.exports === 'object') {
-    module.exports = Util;
-}
-
-//AMD
-if (typeof define === 'function' && define.amd) {
-    define('util', [], function () {
-        return Util;
-    });
-}
-
 //创建一个音乐播放器的类 单例模式
 
 class Player {
@@ -102,26 +24,26 @@ class Player {
 class Musics {
     //歌曲
     constructor() {
-        this.songs = [{
-                id: 1,
-                title: 'Without You',
-                singer: 'Avicii/Sandro Cavazza',
-                songUrl: '//antiserver.kuwo.cn/anti.s?useless=/resource/&format=mp3&rid=MUSIC_187582414&response=res&type=convert_url',
-                imageUrl: '//p2.music.126.net/jkmwhYe2k0oONjJr0WWCmg==/18776360069542158.jpg'
-            },
+        this.songs = [
             {
+                id: 1,
+                title: 'Never Gonna Give You Up',
+                artist: 'Rick Ashley',
+                songUrl: 'https://link.hhtjim.com/kw/9913201.mp3',
+                imageUrl: './assets/images/player/songs/whenever_u_need_sb.jpg'
+            },{
                 id: 2,
-                title: '认真的雪',
-                singer: '薛之谦',
-                songUrl: './songs/song.mp3',
-                imageUrl: './images/songs/renzhendexue.jpg'
+                title: 'Without You',
+                artist: 'Avicii/Sandro Cavazza',
+                songUrl: 'https://link.hhtjim.com/kw/187582414.mp3',
+                imageUrl: './assets/images/player/songs/avici01.jpg'
             },
             {
                 id: 3,
-                title: '演员',
-                singer: '薛之谦',
-                songUrl: './songs/song.mp3',
-                imageUrl: './images/songs/yanyuan.jpg'
+                title: 'The Days',
+                artist: 'Avicii/Robbie Williams',
+                songUrl: 'https://link.hhtjim.com/163/35090550.mp3',
+                imageUrl: './assets/images/player/songs/stories.jpg'
             }
         ]
     }
@@ -136,7 +58,7 @@ class PlayerCreator {
     constructor() {
         this.audio = document.querySelector('.music-player__audio') // Audio dom元素, 因为很多api都是需要原生audio调用的，所以不用jq获取
         // this.audio.muted = true; // 控制静音
-        this.audio.volume = 0.8;
+        this.audio.volume = 1;
 
         //工具
         this.util = new Util();
@@ -148,7 +70,7 @@ class PlayerCreator {
 
         this.render_doms = { //切换歌曲时需要渲染的dom组
             title: $('.music__info--title'),
-            singer: $('.music__info--singer'),
+            artist: $('.music__info--singer'),
             image: $('.music-player__image img'),
             blur: $('.music-player__blur')
         }
@@ -180,7 +102,7 @@ class PlayerCreator {
     renderSongList() {
         let _str = '';
         this.musics.songs.forEach((song, i) => {
-            _str += `<li class="music__list__item">${song.title}</li>`
+            _str += `<li class="music__list__item">${song.title}<br /><span style="color:#aaa;font-size:8px">${song.artist}</span></li>`
         });
         this.song_list.html(_str);
     }
@@ -189,13 +111,13 @@ class PlayerCreator {
     renderSongStyle() {
         let {
             title,
-            singer,
+            artist,
             songUrl,
             imageUrl
         } = this.musics.getSongByNum(this.song_index);
         this.audio.src = songUrl;
         this.render_doms.title.html(title);
-        this.render_doms.singer.html(singer);
+        this.render_doms.artist.html(artist);
         this.render_doms.image.prop('src', imageUrl);
         this.render_doms.blur.css('background-image', 'url("' + imageUrl + '")');
 
@@ -353,8 +275,8 @@ class PlayerCreator {
         //切歌后更改视图显示
         this.renderSongStyle();
         //如果切歌前是在播放，就继续播放
-        if (!_is_pause) this.audio.play();
-    }
+        if (!_is_pause) {this.audio.play();
+    }}
     //禁音
     banNotes() {
         let _o_i = this.$ban.$el.find("i");

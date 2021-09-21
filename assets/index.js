@@ -8,10 +8,13 @@ function showsth(){
 };
 function devtEruda(){
 	var script=document.createElement('script');
-	script.src='https://cdn.bootcss.com/eruda/1.5.4/eruda.min.js';
+	script.src='https://alookbrowser.com/assets/uploads/eruda.js';
 	document.body.appendChild(script); 
 	script.onload=function(){
-		eruda.init()
+		eruda.init();
+      eruda.add(erudaMemory);
+      eruda.add(erudaTiming);
+      eruda.add(erudaDom);
 	};
 	$('#code').remove();
 };
@@ -64,4 +67,4 @@ function hitokotoCopy() {
 };
 function rf(){
     mdui.$('*').mutation()
-}
+};
