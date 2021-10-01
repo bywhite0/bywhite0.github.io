@@ -70,7 +70,7 @@ class PlayerCreator {
 
         this.render_doms = { //切换歌曲时需要渲染的dom组
             title: $('.music__info--title'),
-            artist: $('.music__info--singer'),
+            artist: $('.music__info--artist'),
             image: $('.music-player__image img'),
             blur: $('.music-player__blur')
         }

@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="google-site-verification" content="kK0Rf4O5Ass_sNd3gosFD4LKMjR-ufkq_2EwZE56e0M" />
 <link rel="apple-touch-icon-precomposed" sizes="114x114"  href="/heads/icon-apple.jpg">
 <meta content="yes" name="apple-touch-fullscreen">
 <meta content="yes" name="apple-mobile-web-app-capable">
@@ -15,6 +16,7 @@
 <body class="mdui-theme-primary-teal mdui-theme-accent-teal mdui-theme-layout-auto mdui-theme-color">
 <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js"></script>
 <script src="assets/index.js"></script>
+
 <link rel="stylesheet" href="assets/index.css" />
 <link rel="stylesheet" href="assets/iconfont.css" />
 <link rel="stylesheet" href="assets/player.css" />
@@ -42,26 +44,34 @@
 <button class="mdui-btn mdui-ripple" id="chkCmd" mdui-dialog-confirm>确定</button>
 </div>
 </div>
+<div id="fixed_player" class="mdui-dialog"><div class="mdui-toolbar">
+<span class="mdui-typo-title" >播放器</span>
+<div class="mdui-toolbar-spacer"></div>
+<button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog-close><i class="mdui-icon material-icons">close</i></button>
+</div><iframe src="aplayer/player.html" style="width:100%;height:100%;border:0px;background-color:#0000;"></iframe></div>
 <div class="mdui-toolbar mdui-color-theme" id="homebar">
 <button mdui-drawer="{target: '#drawer'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">menu</i></button>
 <span class="mdui-typo-title" style="margin-left:0px">鸽子窝</span>
 <div class="mdui-toolbar-spacer"></div>
 <span style="float:right" id="tms"></span>
-<button mdui-drawer="{target: '#player'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">play_circle_outline</i></button>
+<button mdui-drawer="{target: '#player'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">album</i></button>
 </div>
-<div id="app">
+<div id="app" style="height:100%">
+<div style="height:100%">
 <router-view v-slot="{ Component }">
   
     <component :is="Component" />
   
 </router-view>
+</div>
 <div class="mdui-drawer" id="drawer">
 <div class="mdui-toolbar">
 <span class="mdui-typo-title" >菜单</span>
 <div class="mdui-toolbar-spacer"></div>
 <button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer-close><i class="mdui-icon material-icons">close</i></button>
 </div>
-<div class="mdui-list-item"><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/bywhite0/bywhite0.github.io?label=%E5%A4%A7%E5%B0%8F&logo=github&style=social&labelColor=0000&color=0000" /></div>
+<a class="mdui-list-item mdui-ripple" href="bookcase/index.html"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">collections_bookmark</i></div><div class="mdui-list-item-content">书柜</div></a>
+<div class="mdui-list-item"><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/bywhite0/bywhite0.github.io?label=%E5%A4%A7%E5%B0%8F&logo=github&style=social" /></div>
 <div class="mdui-list-item">本次渲染用时<span id="LdT"></span>ms</div>
 <script>
 window.onload = function() {$("#LdT").html(window.performance.timing.domComplete - window.performance.timing.domLoading)}
@@ -87,21 +97,24 @@ document.write(+m)
 </ul></li>
 <div class="mdui-subheader"><i class=" mdui-icon material-icons ">public</i>站点</div>
 <router-link to="/" onclick="rf()" class="mdui-list-item mdui-ripple " mdui-drawer-close><div class="mdui-list-item-avatar" style="background-color:#0000"><img src="http://q1.qlogo.cn/g?b=qq&nk=3240558932&s=640&t=1" id="loveAvatar" class="mdui-hidden"></div><div class="mdui-list-item-content">鸽子窝</div></router-link>
-<a href="https://bywforu.wodemo.net" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar" style="background-color:#0000"><img src="http://q1.qlogo.cn/g?b=qq&nk=1842160491&s=640&t=1" id="loveAvatar" class="mdui-hidden"></div><div class="mdui-list-item-content">时空隧道<small class="sm" style="font-size:10px">(建设中)</small></div></a>
+<a href="https://bywforu.wodemo.net" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar" style="background-color:#0000"><img src="http://q1.qlogo.cn/g?b=qq&nk=1842160491&s=640&t=1" id="loveAvatar" class="mdui-hidden"></div><div class="mdui-list-item-content">时空隧道<small class="sm" style="font-size:10px">(未开工)</small></div></a>
 <a href="https://github.com/bywhite0" target="_blank" class="mdui-list-item mdui-ripple">
 <div class="mdui-list-item-avatar" style="background-color:#0000">
 <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 36 36" enable-background="new 0 0 36 36" xml:space="preserve" class="mdui-icon"><path fill-rule="evenodd" clip-rule="evenodd" fill="#000" d="M18,1.4C9,1.4,1.7,8.7,1.7,17.7c0,7.2,4.7,13.3,11.1,15.5c0.8,0.1,1.1-0.4,1.1-0.8c0-0.4,0-1.4,0-2.8c-4.5,1-5.5-2.2-5.5-2.2c-0.7-1.9-1.8-2.4-1.8-2.4c-1.5-1,0.1-1,0.1-1c1.6,0.1,2.5,1.7,2.5,1.7c1.5,2.5,3.8,1.8,4.7,1.4c0.1-1.1,0.6-1.8,1-2.2c-3.6-0.4-7.4-1.8-7.4-8.1c0-1.8,0.6-3.2,1.7-4.4c-0.2-0.4-0.7-2.1,0.2-4.3c0,0,1.4-0.4,4.5,1.7c1.3-0.4,2.7-0.5,4.1-0.5c1.4,0,2.8,0.2,4.1,0.5c3.1-2.1,4.5-1.7,4.5-1.7c0.9,2.2,0.3,3.9,0.2,4.3c1,1.1,1.7,2.6,1.7,4.4c0,6.3-3.8,7.6-7.4,8c0.6,0.5,1.1,1.5,1.1,3c0,2.2,0,3.9,0,4.5c0,0.4,0.3,0.9,1.1,0.8c6.5-2.2,11.1-8.3,11.1-15.5C34.3,8.7,27,1.4,18,1.4z"></path></svg></div><div class="mdui-list-item-content">GitHub</div>
 </a>
+<div class="mdui-subheader"><i class="mdui-icon material-icons">play_circle_outline</i>播放器</div>
+<div class="mdui-list-item mdui-ripple mdui-hidden" mdui-dialog="{target: '#fixed_player'}" mdui-drawer-close><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i></div><div class="mdui-list-item-content">点击打开播放器</div></div>
+<div class="mdui-list-item">正在修复，暂不可用</div>
 <div class="mdui-subheader"><i class="mdui-icon material-icons">widgets</i>小组件</div>
 <li class="mdui-collapse-item">
 <div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">access_time</i></div><div class="mdui-list-item-content">时钟</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
 <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
-<a href="/watchclock" class="mdui-list-item mdui-ripple">仿Watch时钟</a>
-<a href="/slideclock" class="mdui-list-item mdui-ripple">滑动时钟</a>
+<router-link to="/watchclock" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>仿Watch时钟</router-link>
+<router-link to="/slideclock" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>滑动时钟</router-link>
 <a href="/scrolltime" class="mdui-list-item mdui-ripple">滚动时间</a>
 <a href="/countdown" class="mdui-list-item mdui-ripple">倒数时钟</a>
-<a href="/360clock" class="mdui-list-item mdui-ripple">360°文字时钟</a>
-<a href="/textclock" class="mdui-list-item mdui-ripple">英文时钟</a> </ul>
+<router-link to="/rclock" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>360°文字时钟</router-link>
+<router-link to="/textclock" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>英文时钟</router-link> </ul>
 </li>
 <div class="mdui-subheader"><i class="mdui-icon material-icons">build</i>工具</div>
 <li class="mdui-collapse-item">
@@ -168,6 +181,7 @@ document.write(+m)
 </div>
 <script src="vue/homepage.js"></script>
 <script src="vue/videos.js"></script>
+<script src="vue/clocks.js"></script>
 <script defer="defer">
 var l=0,y=0;
 function checkFive(){
@@ -188,9 +202,7 @@ function checkFive(){
 </script>
 <script>
 const routes = [
-  { path: '/', component: home, },
-  { path: '/rickroll', component: rickroll ,},
-  { path: '/daisuke', component: daisuke ,},
+  { path: '/', component: home },{ path: '/rickroll', component: rickroll},{ path: '/daisuke', component: daisuke},{ path: '/textclock', component: textclock},{ path: '/slideclock', component: slideclock},{ path: '/watchclock', component: watchclock},{ path: '/rclock', component: rclock},
 ]
 const router = VueRouter.createRouter({
 history: VueRouter.createWebHashHistory(),
@@ -199,7 +211,7 @@ history: VueRouter.createWebHashHistory(),
 const app = Vue.createApp({})
 app.use(router)
 
-app.mount('body')
+app.mount('#app')
 
 var stage = document.getElementById("app");
 stage.onload = function(){

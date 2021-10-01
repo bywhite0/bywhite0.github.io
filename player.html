@@ -11,18 +11,18 @@
 <link rel="stylesheet" href="assets/player.css" />
 <link rel="stylesheet" href="assets/index.css" />
 </head>
-<body style="background-color:#0000;">
+<body id="drawer">
 
 <!-- 播放器 -->
-<div class="music-player" style="opacity:1">
+<div class="music-player">
 	<!-- audio标签 -->
 	<audio id="song" class="music-player__audio" preload="metadata"></audio>
 	<!-- 播放器主体 -->
 	<div class="music-player__main">
-		<!-- 模糊背景 -->
-		<div class="music-player__blur"></div>
+		<!-- 模糊背景
+		<div class="music-player__blur"></div>-->
 		<!-- 唱片 -->
-		<div class="music-player__disc">
+		<div class="music-player__disc" src="./assets/images/player/cd.png">
 			<!-- 唱片图片 -->
 			<div class="music-player__image">
 				<img width="100%" src="" alt="">
@@ -35,7 +35,7 @@
 			<!-- 歌曲信息 -->
 			<div class="music__info">
 				<h3 id="now_song" class="music__info--title">...</h3>
-				<p class="music__info--singer">...</p>
+				<p class="music__info--artist">...</p>
 			</div>
 			<!-- 控件... -->
 			<div class="player-control">

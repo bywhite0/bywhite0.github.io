@@ -1,0 +1,4 @@
+const watchclock = {template:`<iframe src="clock/watchclock.html"  style="width:100%;border:0px;overflow-x:hidden;overflow-y:auto;background-color:#0000;"></iframe>`};
+const textclock = {template:`<div class="mdui-video-container"><iframe src="clock/textclock.html" style="width:100%;height:100%;border:0px;background-color:#0000;"></iframe></div>`};
+const slideclock = {template:`<iframe src="clock/slideclock.html" style="width:100%;height:100%;border:0px;background-color:#0000;"></iframe>`};
+const rclock = {template:`<iframe src="clock/360clock.html" style="width:100%;height:100%;border:0px;background-color:#0000;"></iframe>`}

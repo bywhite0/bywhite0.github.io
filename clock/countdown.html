@@ -1,0 +1,202 @@
+<html>
+<head>
+<title>HS13</title>
+<meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no"/>
+<meta charset="UTF-8" />
+<script>
+var pageSwitch = true; // 开启/关闭点击切换页面
+var seconds = true; // 显示秒
+var dayMonth = false; // 将日放在月之前
+var LightBackground = true; // 开启浅色模式
+var opacity = "0.1"; //不透明度
+var CustomTextColor = false; 
+var PickColor = ""; // 自定义颜色 (输入颜色名（英文）或颜色16进制码)(覆盖深色和浅色设置)
+var borderWidth = "0"; // 边框厚度
+var borderColor = "black"; // 边框颜色
+var countdown = true; // 隐藏/显示倒数日页面
+var countMonth = "Aug"; // 目标月份
+var countDay = "16"; // 目标日
+var countYear = "2021"; // 目标年
+var countHour = "0"; // 目标时(24小时制)(可选)
+var countMinute = "0"; // 目标分(必填)
+var eventName = "开学"; // 倒数日名称
+var refresh = "0"; // 自动刷新到默认页面(单位为毫秒)。
+</script>
+</head>
+<body>
+<div id="box">
+<div id="inner1" onclick="showCd()">
+<div style="float:center;text-align:center">
+<div id="clockbox"></div>
+<script type="text/javascript">
+var tday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+var tmonth=["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+function GetClock(){
+var d=new Date();
+var nday=d.getDay(),
+nmonth=d.getMonth(),
+ndate=d.getDate();
+var nhour=d.getHours(),
+nmin=d.getMinutes(),ap;
+var nseconds=d.getSeconds()
+if(nhour<=9) nhour="0"+nhour;
+if(nmin<=9) nmin="0"+nmin;
+if(nseconds<=9) nseconds="0"+nseconds; 
+if (seconds == true) {
+
+if (dayMonth == false) {
+var clocktext="<br /><h1 style='margin-top:18px;margin-bottom:-10px;margin-top:20px;font-size: 55px;'>"+nhour+":"+nmin+":"+nseconds+"</h1 ><h3 style='margin-top:20px;'>"+tmonth[nmonth]+""+ndate+"日"+" "+tday[nday]+"</h3>";
+}else {
+var clocktext="<br /><h1 style='margin-top:18px;margin-bottom:-10px;margin-top:20px;font-size: 55px;'>"+nhour+":"+nmin+" "+nseconds+"</h1 ><h3 style='margin-top:20px;'>"+tday[nday]+"<br>"+ndate+"日 "+tmonth[nmonth]+"</h3>";
+}}else{
+if (dayMonth == false) {
+var clocktext="<br /><h1 style='margin-top:18px;margin-bottom:-10px;margin-top:20px;font-size: 55px;'>"+nhour+":"+nmin+"</h1 ><h3 style='margin-top:20px;'>"+tmonth[nmonth]+""+ndate+"日"+" "+tday[nday]+"</h3>";
+}else {
+var clocktext="<br /><h1 style='margin-top:18px;margin-bottom:-10px;margin-top:20px;font-size: 55px;'>"+nhour+":"+nmin+"</h1 ><h3 style='margin-top:20px;'>"+tday[nday]+"<br>"+ndate+" "+tmonth[nmonth]+"</h3>";
+}}
+document.getElementById('clockbox').innerHTML=clocktext;
+}
+
+GetClock();
+setInterval(GetClock,1000);
+</script></div>
+</div>
+<div id="inner2" style="display: none;float:center;text-align:center;" onclick="showCl()">
+<script>
+// 设定倒数日期
+var countDownDate = new Date(countMonth+ " " + countDay + ", " + countYear + " " + countHour + ":" + countMinute).getTime();
+
+// 每秒刷新一次
+var x = setInterval(function() {
+
+  // 获取今天的日期、时间
+  var now = new Date().getTime();
+
+  // 计算设定日期与当前日期的差
+  var distance = countDownDate - now;
+  // 如果设定日期为过去时间
+  if (distance < 0){
+  var distance = now - countDownDate;
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+  if (eventName == "") {
+  document.getElementById("inner2").innerHTML = "<br>" + days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s <br><h3>距离 " + countMonth+ " " + countDay + ", " + countYear + "</h3>";
+}else {
+document.getElementById("inner2").innerHTML = "<br><h3>" + eventName + "已经过去 </h3>" + "<br /><h2>" + days + "天" +hours + "时" + minutes + "分" + seconds +"秒</h2>";
+  }
+  }else{
+  // 计算天、时、分、秒
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+  // 通过id为“demo”的元素显示结果
+ if (eventName == "") {
+  document.getElementById("inner2").innerHTML = "<br>" + days + "d " + hours + "h "
+  + minutes + "m " + seconds + "s <br><h3>距离 " + countMonth+ " " + countDay + ", " + countYear + "</h3>";
+}else {
+document.getElementById("inner2").innerHTML = "<br><h3>距离" + eventName + "还有 </h3>" + "<br /><h2>" + days + "天" +hours + "时" + minutes + "分" + seconds +"秒</h2>";
+}
+}
+  // 如果倒计时结束，显示一些文本
+  //if (distance < 0) {
+    //clearInterval(x);
+    //document.getElementById("inner2").innerHTML = "倒数结束!";
+ // }
+}, 1000);
+</script>
+</div>
+<style>
+#button {
+margin-top: 10px;
+}
+#line2 {
+overflow:hidden;
+white-space: nowrap;
+overflow-x: scroll;
+overflow-y: clip;
+}
+#inner2 {
+height: 153px;
+margin: 0;
+margin-right: 2px;
+}
+#inner2 {
+margin: 0;
+}
+#button img{
+width: 10%;
+margin: 10px;
+}
+#button {
+margin-right: -5px;
+}
+#box {
+height: 153px;
+border-radius: 20px;
+color: black;
+background-position: center;
+background-repeat: no-repeat;
+}
+#temp {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+#inner1, #inner2 {
+	margin: 15px;
+}
+h3, h2, h1{
+margin: 0;
+}
+h3{
+	margin-top:20px;
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+body {
+color: #fff;
+background-color: #333;
+   }
+  *{
+color: #fff;
+   }
+}
+</style>
+<script>
+if(customBackgroundColor == true){
+document.getElementById('box').style.background = customColor;
+document.getElementById('box').style.opacity = opacity;
+}else if(LightBackground == true){
+document.getElementById('box').style.background = "rgba(255, 255, 255, "+opacity+")";}else {
+document.getElementById('box').style.background = "rgba(0, 0, 0, "+opacity+")";
+}
+if(CustomTextColor == true){
+document.getElementById('box').style.color = PickColor;
+}
+
+function showCd() {
+document.getElementById("inner1").style.display = "none";
+document.getElementById("inner2").style.display = "block";
+}
+
+function showCl() {
+document.getElementById("inner1").style.display = "block";
+document.getElementById("inner2").style.display = "none";
+}
+document.getElementById("box").style.backgroundSize = "cover";
+</script>
+<script>
+if (refresh > 0) {
+	setTimeout(function(){
+   window.location.reload(1);
+}, refresh);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!doctype html>
+<html>
+<head>
+    <title>文字时钟</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="format-detection" content="telephone=no" />
+</head>
+<body class="mdui-theme-layout-auto mdui-theme-color">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
+        <meta content="yes" name="apple-touch-fullscreen">
+        <meta content="yes" name="apple-mobile-web-app-capable">
+                <style>
+                    @font-face {
+                        font-family: "Plex";
+                        src: url("https://cdn.jsdelivr.net/gh/IBM/plex@master/IBM-Plex-Mono/fonts/complete/ttf/IBMPlexMono-Medium.ttf") format("truetype");
+                        font-style: "normal";
+                        font-weight: 400;
+                    }
+ 
+                    .textclock {
+                        margin: 0 auto;
+                        user-select: none;
+                        font-family: "Plex", sans-serif;
+                        width: 100%;
+                        height: 100vh;
+                        overflow: hidden;
+                    }
+ 
+                    #clock {
+                        margin: auto;
+                        display: inline-block;
+                        font-size: 1rem;
+                        text-transform: uppercase;
+                        white-space: pre-wrap;
+                        padding: 0;
+                        line-height: 1.3;
+                        display: flex;
+                        flex-wrap: wrap;
+                        max-width: 268px;
+                        word-break: break-word;
+                    }
+ 
+                    #clock.fullscreen {
+                        width: 100vw;
+                        max-width: 100vw;
+                        height: 100vh;
+                        margin: 0;
+                        text-align: justify;
+                        font-size: 7vw;
+                        overflow: hidden;
+                    }
+ 
+                    #clock.fullscreen span {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+ 
+                    @media screen and (max-width: 320px) {
+                        #clock.fullscreen {
+                            font-size: 6.8vw;
+                        }
+                    }
+ 
+                    #clock span {
+                        letter-spacing: 11px;
+                    }
+ 
+                    #debug {
+                        display: none;
+                        background: black;
+                        color: white;
+                        padding: 1rem;
+                    }
+                </style>
+                <div class="textclock">
+                    <div id="debug"></div>
+                    <div id="clock">
+                        <span class="always-on">it</span>
+                        <span class="filler">R</span>
+                        <span class="always-on">IS</span>
+                        <span id="half">half</span>
+                        <span class="filler">E</span>
+                        <span id="ten-min">ten</span>
+                        <span id="quarter">quarter</span>
+                        <span id="twenty">twenty</span>
+                        <span id="five-min">five</span>
+                        <span id="minutes">minutes</span>
+                        <span class="filler">DD</span>
+ 
+                        <span id="past">past</span>
+                        <span id="to">to</span>
+                        <span id="one">one</span>
+                        <span class="filler">ITR</span>
+                        <span class="signature">W</span>
+ 
+                        <span id="three">three</span>
+                        <span id="two">two</span>
+                        <span id="four">four</span>
+                        <span class="signature">E</span>
+ 
+                        <span id="five-hrs">five</span>
+                        <span id="seven">seven</span>
+                        <span id="six">six</span>
+                        <span class="signature">B</span>
+ 
+                        <span id="nine">nine</span>
+                        <span id="eight">eight</span>
+                        <span class="signature">THEM</span>
+ 
+                        <span id="eleven">eleven</span>
+                        <span id="ten-hrs">ten</span>
+                        <span class="signature">ESBY</span>
+ 
+                        <span id="twelve">twelve</span>
+                        <span id="oclock">o'clock</span>
+                        <span class="signature">WHITESHADOW_</span>
+                        <span class="always-on">.</span>
+                    </div>
+                    <script>
+                        ((userActiveTextColor = '#0000', userInActiveTextColor = '#7f7f7f80', userBackgroundColor = '#0000', isFullscreen = false) => {
+                            class Wordclock {
+                                constructor(activeColor, inactiveColor, backgroundColor) {
+                                    this.spans = [...document.getElementsByTagName('span')];
+                                    this.alwaysOnEls = [...document.querySelectorAll('.always-on')];
+                                    this.applyUserOptions(activeColor, inactiveColor, backgroundColor);
+ 
+                                    this.tick();
+                                    // update every 10 sec;
+                                    setInterval(() => {
+                                        this.tick();
+                                    }, 10000);
+                                }
+                                applyUserOptions(activeColor, inactiveColor, backgroundColor) {
+                                    const userStyles = document.createElement('style');
+                                    userStyles.innerHTML = `#clock {background-color: ${backgroundColor};color: ${inactiveColor};}.on{color:${activeColor};}`;
+ 
+                                    document.head.appendChild(userStyles);
+                                }
+ 
+                                tick() {
+                                    this.localDate = new Date();
+                                    this.mins = this.localDate.getMinutes();
+                                    this.hrs = this.localDate.getHours();
+                                    this.on();
+                                }
+ 
+                                on() {
+                                    this.spans.map((el) => {
+                                        el.classList.remove('on');
+                                    });
+ 
+                                    mdui.$(".on").addClass("mdui-color-theme-text");
+                                    this.alwaysOn();
+ 
+                                    if (this.mins >= 0 && this.mins < 5) {
+                                        this.oclock();
+                                    }
+                                    if (this.mins >= 5 && this.mins < 10) {
+                                        this.fiveMin();
+                                        this.minutes();
+                                        this.past();
+                                    }
+                                    if (this.mins >= 10 && this.mins < 15) {
+                                        this.tenMin();
+                                        this.minutes();
+                                        this.past();
+                                    }
+                                    if (this.mins >= 15 && this.mins < 20) {
+                                        this.quarter();
+                                        this.past();
+                                    }
+                                    if (this.mins >= 20 && this.mins < 25) {
+                                        this.twenty();
+                                        this.minutes();
+                                        this.past();
+                                    }
+                                    if (this.mins >= 25 && this.mins < 30) {
+                                        this.twenty();
+                                        this.fiveMin();
+                                        this.minutes();
+                                        this.past();
+                                    }
+                                    if (this.mins >= 30 && this.mins < 35) {
+                                        this.half();
+                                        this.past();
+                                    }
+                                    if (this.mins >= 35 && this.mins < 40) {
+                                        this.twenty();
+                                        this.fiveMin();
+                                        this.minutes();
+                                        this.to();
+                                        this.hrs++;
+                                    }
+                                    if (this.mins >= 40 && this.mins < 45) {
+                                        this.twenty();
+                                        this.minutes();
+                                        this.to();
+                                        this.hrs++;
+                                    }
+                                    if (this.mins >= 45 && this.mins < 50) {
+                                        this.quarter();
+                                        this.to();
+                                        this.hrs++;
+                                    }
+                                    if (this.mins >= 50 && this.mins < 55) {
+                                        this.tenMin();
+                                        this.minutes();
+                                        this.to();
+                                        this.hrs++;
+                                    }
+                                    if (this.mins >= 55 && this.mins < 60) {
+                                        this.fiveMin();
+                                        this.minutes();
+                                        this.to();
+                                        this.hrs++;
+                                    }
+ 
+                                    switch (this.hrs) {
+                                        case 0:
+                                        case 12:
+                                            this.twelve();
+                                            break;
+ 
+                                        case 1:
+                                        case 13:
+                                            this.one();
+                                            break;
+ 
+                                        case 2:
+                                        case 14:
+                                            this.two();
+                                            break;
+ 
+                                        case 3:
+                                        case 15:
+                                            this.three();
+                                            break;
+ 
+                                        case 4:
+                                        case 16:
+                                            this.four();
+                                            break;
+ 
+                                        case 5:
+                                        case 17:
+                                            this.fiveHrs();
+                                            break;
+ 
+                                        case 6:
+                                        case 18:
+                                            this.six();
+                                            break;
+ 
+                                        case 7:
+                                        case 19:
+                                            this.seven();
+                                            break;
+ 
+                                        case 8:
+                                        case 20:
+                                            this.eight();
+                                            break;
+ 
+                                        case 9:
+                                        case 21:
+                                            this.nine();
+                                            break;
+ 
+                                        case 10:
+                                        case 22:
+                                            this.tenHrs();
+                                            break;
+ 
+                                        case 11:
+                                        case 23:
+                                            this.eleven();
+                                            break;
+ 
+                                        case 12:
+                                        case 0:
+                                        case 24:
+                                            this.twelve();
+                                            break;
+                                    }
+                                }
+ 
+                                alwaysOn() {
+                                    this.alwaysOnEls.forEach((el) => {
+                                        el.classList.add('mdui-text-color-theme-text');
+                                    });
+                                }
+                                half() {
+                                    document.getElementById('half').classList.add('mdui-text-color-theme-text');
+                                }
+                                tenMin() {
+                                    document.getElementById('ten-min').classList.add('mdui-text-color-theme-text');
+                                }
+                                quarter() {
+                                    document.getElementById('quarter').classList.add('mdui-text-color-theme-text');
+                                }
+                                twenty() {
+                                    document.getElementById('twenty').classList.add('mdui-text-color-theme-text');
+                                }
+                                fiveMin() {
+                                    document.getElementById('five-min').classList.add('mdui-text-color-theme-text');
+                                }
+                                minutes() {
+                                    document.getElementById('minutes').classList.add('mdui-text-color-theme-text');
+                                }
+                                past() {
+                                    document.getElementById('past').classList.add('mdui-text-color-theme-text');
+                                }
+                                to() {
+                                    document.getElementById('to').classList.add('mdui-text-color-theme-text');
+                                }
+                                one() {
+                                    document.getElementById('one').classList.add('mdui-text-color-theme-text');
+                                }
+                                three() {
+                                    document.getElementById('three').classList.add('mdui-text-color-theme-text');
+                                }
+                                two() {
+                                    document.getElementById('two').classList.add('mdui-text-color-theme-text');
+                                }
+                                four() {
+                                    document.getElementById('four').classList.add('mdui-text-color-theme-text');
+                                }
+                                fiveHrs() {
+                                    document.getElementById('five-hrs').classList.add('mdui-text-color-theme-text');
+                                }
+                                six() {
+                                    document.getElementById('six').classList.add('mdui-text-color-theme-text');
+                                }
+                                seven() {
+                                    document.getElementById('seven').classList.add('mdui-text-color-theme-text');
+                                }
+                                eight() {
+                                    document.getElementById('eight').classList.add('mdui-text-color-theme-text');
+                                }
+                                nine() {
+                                    document.getElementById('nine').classList.add('mdui-text-color-theme-text');
+                                }
+                                tenHrs() {
+                                    document.getElementById('ten-hrs').classList.add('mdui-text-color-theme-text');
+                                }
+                                eleven() {
+                                    document.getElementById('eleven').classList.add('mdui-text-color-theme-text');
+                                }
+                                twelve() {
+                                    document.getElementById('twelve').classList.add('mdui-text-color-theme-text');
+                                }
+                                oclock() {
+                                    document.getElementById('oclock').classList.add('mdui-text-color-theme-text');
+                                }
+                            }
+                            userActiveTextColor;
+                            userInActiveTextColor;
+                            userBackgroundColor;
+                            new Wordclock(userActiveTextColor, userInActiveTextColor, userBackgroundColor);
+ 
+                            if (isFullscreen) {
+                                document.getElementById('clock').classList.add('fullscreen');
+                            }
+ 
+                            document.getElementById('clock').addEventListener('dblclick', () => {
+                                const signature = document.querySelectorAll('.signature');
+                                const on = document.querySelectorAll('.on');
+ 
+                                on.forEach((el) => el.classList.toggle('on'));
+                                signature.forEach((el) => el.classList.toggle('on'));
+                            });
+                        })(window.userActiveTextColor, window.userInActiveTextColor, window.userBackgroundColor, window.isFullscreen);
+                    </script>
+</body>
+ 
+</html>
