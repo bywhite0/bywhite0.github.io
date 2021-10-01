@@ -82,14 +82,14 @@ function is_player() {
             "-webkit-animation": "baoguo infinite 5s linear",
             "animation": "baoguo infinite 5s linear"
         });
-        $('#player_btn').html('<img src="../images/pause.png">');
+        $('#player_btn').html('<img src="./images/pause.png">');
     } else {
         /*暂停*/
         player.pause();
         $('title').text(wy_title)
         setCookie('player', '0')
         $("#pic img").removeAttr("style", "");
-        $('#player_btn').html('<img src="../images/play.png">');
+        $('#player_btn').html('<img src="./images/play.png">');
     }
 
     //判断是否播放完毕
