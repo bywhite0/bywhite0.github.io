@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>HS13</title>
+<title>倒数时钟</title>
 <meta name="viewport" content="width=device-width, maximum-scale=1.0, user-scalable=no"/>
 <meta charset="UTF-8" />
 <script>
@@ -13,13 +13,12 @@ var CustomTextColor = false;
 var PickColor = ""; // 自定义颜色 (输入颜色名（英文）或颜色16进制码)(覆盖深色和浅色设置)
 var borderWidth = "0"; // 边框厚度
 var borderColor = "black"; // 边框颜色
-var countdown = true; // 隐藏/显示倒数日页面
-var countMonth = "Aug"; // 目标月份
-var countDay = "16"; // 目标日
-var countYear = "2021"; // 目标年
+var countMonth = "Jan"; // 目标月份
+var countDay = "1"; // 目标日
+var countYear = "2022"; // 目标年
 var countHour = "0"; // 目标时(24小时制)(可选)
 var countMinute = "0"; // 目标分(必填)
-var eventName = "开学"; // 倒数日名称
+var eventName = "新年"; // 倒数日名称
 var refresh = "0"; // 自动刷新到默认页面(单位为毫秒)。
 </script>
 </head>
@@ -45,7 +44,7 @@ if(nseconds<=9) nseconds="0"+nseconds;
 if (seconds == true) {
 
 if (dayMonth == false) {
-var clocktext="<br /><h1 style='margin-top:18px;margin-bottom:-10px;margin-top:20px;font-size: 55px;'>"+nhour+":"+nmin+":"+nseconds+"</h1 ><h3 style='margin-top:20px;'>"+tmonth[nmonth]+""+ndate+"日"+" "+tday[nday]+"</h3>";
+var clocktext="<br /><h1 style='margin-top:18px;margin-bottom:-10px;margin-top:20px;font-size: 55px;'>"+nhour+":"+nmin+" <span style='font-size:24px'>"+nseconds+"</span></h1 ><h3 style='margin-top:20px;'>"+tmonth[nmonth]+""+ndate+"日"+" "+tday[nday]+"</h3>";
 }else {
 var clocktext="<br /><h1 style='margin-top:18px;margin-bottom:-10px;margin-top:20px;font-size: 55px;'>"+nhour+":"+nmin+" "+nseconds+"</h1 ><h3 style='margin-top:20px;'>"+tday[nday]+"<br>"+ndate+"日 "+tmonth[nmonth]+"</h3>";
 }}else{
