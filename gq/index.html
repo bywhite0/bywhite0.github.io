@@ -31,7 +31,9 @@
       </div>
       <a class="next" onClick='changeHat()'></a>
     </div>
+<a id="output" href="">
     <img id='export' alt='国庆专属头像' src='' />
+</a>
     <div class="operation-btns">
       <a class="o-btn1">
         <input class="o-btn1" id='upload' type='file' onchange='viewer()' style='opacity: 0;'>
@@ -158,10 +160,20 @@
       width: screenWidth,
       height: screenWidth
     });
-    alert('长按图片保存或分享');
+    alert('点击图片保存或分享');
   }
   
 
+</script>
+<script>
+	var op = document.getElementsById("export").src;
+	// 实例化一个Blob对象，其构造函数的第一个参数是包含文件内容的数组，第二个参数是包含文件类型属性的对象
+	var blob = new Blob([op], { type: "image/jpeg" });
+	var a = document.getElementById("output");
+	// 利用URL.createObjectURL()方法为a元素生成blob URL
+	a.href = URL.createObjectURL(blob);
+	// 设置文件名
+	a.download = "avatar.jpg";
 </script>
 </body>
 </html>
