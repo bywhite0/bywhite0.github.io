@@ -30,26 +30,26 @@ class Musics {
                 title: 'Never Gonna Give You Up',
                 artist: 'Rick Ashley',
                 songUrl: 'https://link.hhtjim.com/kw/9913201.mp3',
-                imageUrl: './assets/images/player/songs/whenever_u_need_sb.jpg'
+                imageUrl: 'https://cdn.jsdelivr.net/gh/bywhite0/bywhite0.github.io@main/assets/images/player/songs/whenever_u_need_sb.jpg'
             },
             {
                 id: 2,
                 title: 'The Days',
                 artist: 'Avicii/Robbie Williams',
                 songUrl: 'https://link.hhtjim.com/163/35090550.mp3',
-                imageUrl: './assets/images/player/songs/dayNightEP.jpg'
+                imageUrl: 'https://cdn.jsdelivr.net/gh/bywhite0/bywhite0.github.io@main/assets/images/player/songs/dayNightEP.jpg'
             },{
                 id: 3,
                 title: 'Without You',
                 artist: 'Avicii/Sandro Cavazza',
                 songUrl: 'https://link.hhtjim.com/kw/187582414.mp3',
-                imageUrl: './assets/images/player/songs/avici01.jpg'
+                imageUrl: 'https://cdn.jsdelivr.net/gh/bywhite0/bywhite0.github.io@main/assets/images/player/songs/avici01.jpg'
             },{
                 id: 4,
                 title: '动物世界',
                 artist: '薛之谦',
                 songUrl: 'https://link.hhtjim.com/163/468517654.mp3',
-                imageUrl: './assets/images/player/songs/crossing.jpg'
+                imageUrl: 'https://cdn.jsdelivr.net/gh/bywhite0/bywhite0.github.io@main/assets/images/player/songs/crossing.jpg'
             }
         ]
     }
