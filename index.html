@@ -48,7 +48,7 @@
 <span class="mdui-typo-title" >播放器</span>
 <div class="mdui-toolbar-spacer"></div>
 <button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog-close><i class="mdui-icon material-icons">close</i></button>
-</div><iframe src="aplayer/player.html" style="width:100%;height:100%;border:0px;background-color:#0000;"></iframe></div>
+</div><iframe src="./aplayer/player.html" style="width:100%;height:100%;border:0px;background-color:#0000;"></iframe></div>
 <div class="mdui-toolbar mdui-color-theme" id="homebar">
 <button mdui-drawer="{target: '#drawer'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">menu</i></button>
 <span class="mdui-typo-title" style="margin-left:0px">鸽子窝</span>
@@ -70,7 +70,7 @@
 <div class="mdui-toolbar-spacer"></div>
 <button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer-close><i class="mdui-icon material-icons">close</i></button>
 </div>
-<a class="mdui-list-item mdui-ripple" href="/bookcase"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">collections_bookmark</i></div><div class="mdui-list-item-content">书柜</div></a>
+<a class="mdui-list-item mdui-ripple" href="./bookcase/index.html"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">collections_bookmark</i></div><div class="mdui-list-item-content">书柜</div></a>
 <div class="mdui-list-item"><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/bywhite0/bywhite0.github.io?label=%E5%A4%A7%E5%B0%8F&logo=github&style=social" /></div>
 <div class="mdui-list-item">本次渲染用时<span id="LdT"></span>ms</div>
 <script>
@@ -109,10 +109,10 @@ document.write(+m)
 <li class="mdui-collapse-item">
 <div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">access_time</i></div><div class="mdui-list-item-content">时钟</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
 <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
-<router-link to="/watchclock" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>仿Watch时钟</router-link>
+<a href="./clock/watchclock.html" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>仿Watch时钟</a>
 <router-link to="/slideclock" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>滑动时钟</router-link>
 <a href="./clock/countdown.html" class="mdui-list-item mdui-ripple">倒数时钟</a>
-<router-link to="/rclock" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>360°文字时钟</router-link>
+<a href="./clock/360clock.html" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>360°文字时钟</a>
 <router-link to="/textclock" onclick="rf()" class="mdui-list-item mdui-ripple" mdui-drawer-close>英文时钟</router-link> </ul>
 </li>
 <div class="mdui-subheader"><i class="mdui-icon material-icons">build</i>工具</div>
@@ -123,7 +123,7 @@ document.write(+m)
 <a href="https://bandoristation.com" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Bandori车站<div class="mdui-list-item-text">BanG Dream!少女乐团派对!的<br />房间号收集平台</div></div></a>
 <a href="https://penguin-stats.cn" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">企鹅物流数据统计<div class="mdui-list-item-text">明日方舟掉率统计</div></div></a>
 <a href="https://616.sb" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Konmai Academy<div class="mdui-list-item-text">「纯净的音游下载站」</div></div></a>
-<a href="https://tool.sonolus.reikohaku.fun" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Sonolus工具站<div class="mdui-list-item-text">Sonolus的工具聚合站</div></div></a>
+<a href="https://tool.sonolus.reikohaku.fun" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">Sonolus工具站</div></a>
 </ul>
 </li>
 <li class="mdui-collapse-item">
@@ -141,15 +141,14 @@ document.write(+m)
 <li class="mdui-collapse-item">
 <div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">games</i></div><div class="mdui-list-item-content">游戏</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
 <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
-<a href="/LiveRe/view" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">人生重开模拟器<div class="mdui-list-item-text">这垃圾人生一秒也不想呆了</div></div></a></ul>
+<a href="./LiveRe/view/index.html" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-content">人生重开模拟器<div class="mdui-list-item-text">这垃圾人生一秒也不想呆了</div></div></a></ul>
 </li>
 <li class="mdui-collapse-item">
 <div class="mdui-collapse-item-header mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons ">folder</i></div><div class="mdui-list-item-content">其他</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i></div>
 <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
-<a href="/gq" class="mdui-list-item mdui-ripple">国庆头像生成</a>
-<a href="/cnvalues" class="mdui-list-item mdui-ripple">CN Values意识形态测试</a>
-<a href="https://cdn.jsdelivr.net/gh/YuriMiller/CompleteSuicideManual-Zh_CN@master/CompleteSuicideManual-Zh_CN.pdf" class="mdui-list-item mdui-ripple mdui-hidden">完全自杀手册</a>
-<a href="/nbnhhsh" class="mdui-list-item mdui-ripple "><div class="mdui-list-item-content">能不能好好说话？<div class="mdui-list-item-text">拼音缩写释义查询工具</div></div></a>
+<a href="./gq/index.html" class="mdui-list-item mdui-ripple">国庆头像生成</a>
+<a href="./cnvalues" class="mdui-list-item mdui-ripple">CN Values意识形态测试</a>
+<a href="./nbnhhsh" class="mdui-list-item mdui-ripple "><div class="mdui-list-item-content">能不能好好说话？<div class="mdui-list-item-text">拼音缩写释义查询工具</div></div></a>
 </ul>
 </li>
 <div class="mdui-subheader"><i class=" mdui-icon material-icons ">folder</i>资源</div>
@@ -162,16 +161,14 @@ document.write(+m)
 </ul>
 </li>
 <div class="mdui-subheader"><i class=" mdui-icon material-icons ">more_horiz</i>其他</div>
-<a href="https://s.wodemo.net/admin" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i></div><div class="mdui-list-item-content">用户中心</div></a>
-<a href="https://s.wodemo.net/notification" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">notifications</i></div><div class="mdui-list-item-content">消息通知<span class="wo-n-count-num" style="float:right"></span></div></a>
-<a href="/sub" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">rss_feed</i></div><div class="mdui-list-item-content">订阅</div></a>
-<a href="https://wodemo.net/latest" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">public</i></div><div class="mdui-list-item-content">别人的网页</div></a>
+<a href="https://s.wodemo.net/admin" class="mdui-list-item mdui-ripple mdui-hidden"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i></div><div class="mdui-list-item-content">用户中心</div></a>
+<a href="./status/index.html" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">equalizer</i></div><div class="mdui-list-item-content">网站状态</div></a>
 <li class="mdui-divider"></li>
 <a href="https://mdui.org" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">view_compact</i></div><div class="mdui-list-item-content">MDUI</div></a>
 <a href="https://v3.cn.vuejs.org" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar" style="background-color:#0000"><img src="https://v3.cn.vuejs.org/logo.png" ></div><div class="mdui-list-item-content">Vue.js</div></a>
 <a href="https://clipboardjs.com.cn" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">content_paste</i></div><div class="mdui-list-item-content">Clipboard.js</div></a>
 <a href="https://hitokoto.cn" class="mdui-list-item mdui-ripple"><div class="mdui-list-item-avatar"><img src="https://cdn.jsdelivr.net/gh/bywhite0/image@main/luotianyi.JPG" ></div><div class="mdui-list-item-content">一言网</div></a>
-<div class="mdui-subheader mdui-hidden"><i class=" mdui-icon material-icons ">link</i>友链</div>
+<div class="mdui-subheader mdui-hidden"><i class=" mdui-icon material-icons">link</i>友链</div>
 </div>
 </div>
 </div>
@@ -180,13 +177,13 @@ document.write(+m)
 <button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer-close><i class="mdui-icon material-icons">chevron_right</i></button>
 <span class="mdui-typo-title" style="margin-left:0px;text-align:center !important;">留声机</span>
 </div>
-<iframe id="inner_player" src="player.html"  style="width:100%;height:100%;border:0px;overflow-x:hidden;overflow-y:auto;background-color:#0000;"></iframe>
+<iframe id="inner_player" src="./player.html"  style="width:100%;height:100%;border:0px;overflow-x:hidden;overflow-y:auto;background-color:#0000;"></iframe>
 
 </div>
 </div>
-<script src="vue/homepage.js"></script>
-<script src="vue/videos.js"></script>
-<script src="vue/clocks.js"></script>
+<script src="./vue/homepage.js"></script>
+<script src="./vue/videos.js"></script>
+<script src="./vue/clocks.js"></script>
 <script defer="defer">
 var l=0,y=0;
 function checkFive(){
@@ -223,6 +220,6 @@ stage.onload = function(){
 mdui.$("*").mutation()
 }
 </script>
-<script src="assets/index.js"></script>
+<script src="./assets/index.js"></script>
 </body>
 </html>
