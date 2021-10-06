@@ -45,4 +45,6 @@ jobs:
 
           next_version: "1.0.0"
           
-          config_dir: /
+          config_dir: Changelog
+          
+          filename: Changelog.md
