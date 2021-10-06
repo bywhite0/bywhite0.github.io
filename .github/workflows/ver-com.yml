@@ -16,7 +16,7 @@ jobs:
           filename: Changelog.md
       - name: add files
         run: |
-          cd /github/workspace
+          cd /home/runner/work/bywhite0.github.io/bywhite0.github.io
           mv Changelog.md /usr/bin
           cd /usr/bin
           git add .
