@@ -16,6 +16,9 @@ jobs:
           filename: Changelog.md
       - name: add files
         run: |
+          cd /github/workspace
+          mv Changelog.md /usr/bin
+          cd /usr/bin
           git add .
       - name: Commit file
         uses: swinton/commit@v2.x
