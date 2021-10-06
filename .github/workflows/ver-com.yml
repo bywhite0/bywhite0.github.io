@@ -17,7 +17,7 @@ jobs:
       - name: add files
         run: |
           cd /home/runner/work/bywhite0.github.io/bywhite0.github.io
-          mv Changelog.md /usr/bin
+          cp Changelog.md /usr/bin
           cd /usr/bin
           git add .
       - name: Commit file
