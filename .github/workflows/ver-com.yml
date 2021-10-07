@@ -17,8 +17,8 @@ jobs:
       - name: add files
         run: |
           cd /home/runner/work/bywhite0.github.io/bywhite0.github.io
-          echo Changelog.md > ${{ GITHUB_ACTION_PATH }}/Changelog
-          cd ${{ GITHUB_ACTION_PATH }}/
+          echo Changelog.md > ./Changelog
+          cd ./
           git add .
       - name: Commit file
         uses: swinton/commit@v2.x
