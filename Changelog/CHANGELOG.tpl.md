@@ -54,9 +54,6 @@
 
 # {{ .Info.Title }}
 
-Please refer to [.config/cool.tpl.md](./.chglog/cool.tpl.md) for the CHANGELOG template.
-
-
 {{ range .Versions }}
 <a name="{{ .Tag.Name }}"></a>
 ## {{ if .Tag.Previous }}[{{ .Tag.Name }}]({{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}){{ else }}{{ .Tag.Name }}{{ end }}
