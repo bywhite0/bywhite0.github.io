@@ -48,10 +48,7 @@
 
 - {{ .Revert.Header }}
 
-{{ end }}
-
 {{ end -}}
-
 
 
 # {{ .Info.Title }}
