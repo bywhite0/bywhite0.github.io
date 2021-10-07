@@ -17,8 +17,8 @@ jobs:
       - name: add files
         run: |
           cd /home/runner/work/bywhite0.github.io/bywhite0.github.io
-          cp Changelog.md /usr/bin
-          cd /usr/bin
+          echo Changelog.md > /path/to/Changelog
+          cd /path/to/Changelog
           git add .
       - name: Commit file
         uses: swinton/commit@v2.x
