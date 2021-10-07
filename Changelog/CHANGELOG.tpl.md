@@ -1,3 +1,9 @@
+# {{ .Info.Title }}
+
+This CHANGELOG is a format conforming to [keep-a-changelog](https://github.com/olivierlacan/keep-a-changelog).  
+
+Please refer to [.config/kac.tpl.md](./.chglog/kac.tpl.md) for the CHANGELOG template.
+
 {{ if .Versions -}}
 
 <a name="unreleased"></a>
@@ -8,6 +14,27 @@
 
 {{ range .Unreleased.CommitGroups -}}
 
+### {{ .Title }}
+
+{{ range .Commits -}}
+
+- {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}
+
+{{ end }}
+
+{{ end -}}
+
+{{ end -}}
+
+{{ end -}}
+
+{{ range .Versions }}
+
+<a name="{{ .Tag.Name }}"></a>
+
+## {{ if .Tag.Previous }}[{{ .Tag.Name }}]{{ else }}{{ .Tag.Name }}{{ end }} - {{ datetime "2006-01-02" .Tag.Date }}
+
+{{ range .CommitGroups -}}
 
 ### {{ .Title }}
 
@@ -27,48 +54,52 @@
 
 - {{ .Revert.Header }}
 
-{{ end -}}
-  
-
-# {{ .Info.Title }}
-
-{{ range .Versions }}
-<a name="{{ .Tag.Name }}"></a>
-## {{ if .Tag.Previous }}[{{ .Tag.Name }}]({{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}){{ else }}{{ .Tag.Name }}{{ end }}
-
-> {{ datetime "2006-01-02" .Tag.Date }}
-
-{{ range .CommitGroups -}}
-### {{ .Title }}
-
-{{ range .Commits -}}
-* {{ if .Scope }}**{{ .Scope }}:** {{ end }}{{ .Subject }}
 {{ end }}
-{{ end -}}
 
-{{- if .RevertCommits -}}
-### Reverts
-
-{{ range .RevertCommits -}}
-* {{ .Revert.Header }}
-{{ end }}
 {{ end -}}
 
 {{- if .MergeCommits -}}
+
 ### Pull Requests
 
 {{ range .MergeCommits -}}
-* {{ .Header }}
+
+- {{ .Header }}
+
 {{ end }}
+
 {{ end -}}
 
 {{- if .NoteGroups -}}
+
 {{ range .NoteGroups -}}
+
 ### {{ .Title }}
 
 {{ range .Notes }}
+
 {{ .Body }}
+
 {{ end }}
+
 {{ end -}}
+
 {{ end -}}
+
+{{ end -}}
+
+{{- if .Versions }}
+
+[Unreleased]: {{ .Info.RepositoryURL }}/compare/{{ $latest := index .Versions 0 }}{{ $latest.Tag.Name }}...HEAD
+
+{{ range .Versions -}}
+
+{{ if .Tag.Previous -}}
+
+[{{ .Tag.Name }}]: {{ $.Info.RepositoryURL }}/compare/{{ .Tag.Previous.Name }}...{{ .Tag.Name }}
+
+{{ end -}}
+
+{{ end -}}
+
 {{ end -}}
