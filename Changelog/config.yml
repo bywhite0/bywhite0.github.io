@@ -1,14 +1,14 @@
 bin: git
 
-style: ""
+style: "github"
 
 template: CHANGELOG.tpl.md
 
 info:
 
-  title: CHANGELOG
+  title: ChangeLog
 
-  repository_url: https://github.com/git-chglog/git-chglog
+  repository_url: https://github.com/bywhite0/bywhite0.github.io
 
 options:
 
@@ -17,12 +17,6 @@ options:
   sort: "date"
 
   commits:
-
-    filters:
-
-      Type:
-
-        - feat
 
     sort_by: Scope
 
@@ -42,11 +36,17 @@ options:
 
   header:
 
-    pattern: "<regexp>"
+    pattern: "<[0-9][A-Z][a-z]>"
 
     pattern_maps:
 
-      - PropName
+      - v
+      
+      - 日常
+      
+      - 修复
+      
+      - 解决
 
   issues:
 
@@ -82,5 +82,4 @@ options:
 
     keywords:
 
-      - BREAKING CHANGE
-
+      - ●
