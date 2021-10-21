@@ -5,8 +5,9 @@
 <details>
 <summary>网站公告:</summary>
 
-[关于网站暂停新内容更新的通知](/site-paused)(2021.10.08)<br />
-[《天气简报》停更公告](/weatherdaily-paused)(2021.09.06)
+
+[《天气简报》更新调整公告](/weather)(2021.10.11)<br />
+[关于网站暂停新内容更新的通知](/site-paused)(2021.10.08)
 
 </details>
 

@@ -21,13 +21,14 @@ sidebar: [
     {
       title: '公告',
       children: [
+
+        {
+          title: '《天气简报》更新调整公告',
+          link: '/weather'
+        },
         {
           title: '关于网站暂停新内容更新的通知',
           link: '/site-paused'
-        },
-        {
-          title: '《天气简报》停更公告',
-          link: '/weatherdaily-paused'
         }
      ]
     },

@@ -1,7 +1,7 @@
 # 鸽子窝的二楼
 [二楼地址](https://bywhite0.github.io) | [平行世界](https://bywhite.vercel.app)
 >
-> 对这就是二楼的一号仓库（
+> [一号仓库在这（](https://github.com/bywhite0/bywhite0.github.io)
 >
 > [二号仓库在这（](https://gitee.com/bywhite0/bywhite)
 
