@@ -30,8 +30,8 @@ class App{
         globalThis.onerror = (event, source, lineno, colno, error) => {
             this.hint(`[ERROR] at (${source}:${lineno}:${colno})\n\n${error?.stack||error||'unknow Error'}`, 'error');
         }
-        const keyDownCallback = (keyboardEvent) => {
-            if (keyboardEvent.which === 13 || keyboardEvent.keyCode === 13) {
+        const keyDownCallback = ({which: w, keyCode: k}) => {
+            if ( w === 13 || k === 13 || w === 32 || k === 32 ) {
                 const pressEnterFunc = this.#pages[this.#currentPage]?.pressEnter;
                 pressEnterFunc && typeof pressEnterFunc === 'function' && pressEnterFunc();
             }
@@ -58,6 +58,8 @@ class App{
             <button id="achievement">成就</button>
             <button id="specialthanks">特别感谢</button>
             <button id="themeToggleBtn">黑</button>
+            <button id="save">Save</button>
+            <button id="load">Load</button>
             <div id="title">
                 人生重开模拟器<br>
                 <div style="font-size:1.5rem; font-weight:normal;">这垃圾人生一秒也不想呆了</div>
@@ -77,6 +79,58 @@ class App{
         indexPage
             .find('#achievement')
             .click(()=>this.switch('achievement'));
+
+
+        indexPage
+            .find('#save')
+            .click(()=>{
+                const data = {};
+                Object
+                    .keys(localStorage)
+                    .filter(v=>v.substr(0,4)!='goog')
+                    .forEach(key=>data[key] = localStorage[key]);
+
+                let blob = new Blob([JSON.stringify(data)], { type: 'application/json' });
+                const slice = blob.slice || blob.webkitSlice || blob.mozSlice;
+                blob = slice.call(blob, 0, blob.size, 'application/octet-stream');
+                const a = document.createElementNS('http://www.w3.org/1999/xhtml', 'a');
+                a.href = URL.createObjectURL(blob);
+                a.download = `Remake_save_${new Date().toISOString().replace(':','.')}.json`;
+
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(a.href);
+            });
+
+        indexPage
+            .find('#load')
+            .click(()=>{
+                const file = $(`<input type="file" name="file" accept="application/json" style="display: none;" />`)
+                file.appendTo('body');
+                file.click();
+                file.on('change', (e)=>{
+                    this.switch('loading');
+                    const file = e.target.files[0];
+                    if(!file) return;
+                    const reader = new FileReader();
+                    reader.onload = () => {
+                        const data = JSON.parse(reader.result);
+                        for(const key in data) {
+                            localStorage[key] = data[key];
+                        }
+                        this.switch('index');
+                        this.setTheme(localStorage.getItem('theme'))
+                        if(localStorage.getItem('theme') == 'light') {
+                            indexPage.find('#themeToggleBtn').text('黑')
+                        } else{
+                            indexPage.find('#themeToggleBtn').text('白')
+                        }
+                        this.hint('加载存档成功', 'success');
+                    }
+                    reader.readAsText(file);
+                });
+            });
 
         if(localStorage.getItem('theme') == 'light') {
             indexPage.find('#themeToggleBtn').text('黑')
@@ -109,8 +163,8 @@ class App{
                 <ul class="g1"></ul>
                 <ul class="g2"></ul>
             </div>
-            <button class="sponsor" onclick="globalThis.open('https://www.ziyuanyo.com')" style="background: linear-gradient(90deg,#946ce6,#7e5fd9); left:auto; right:50%; transform: translate(-2rem,-50%);">百度搜索：资源屋</button>
-            <button class="sponsor" onclick="globalThis.open('https://www.ziyuanwu.com')" style="background-color:#c69; left:50%; right:auto; transform: translate(2rem,-50%);">百度搜索：资源屋</button>
+            <button class="sponsor" onclick="globalThis.open('https://afdian.net/@LifeRestart')" style="background: linear-gradient(90deg,#946ce6,#7e5fd9); left:auto; right:50%; transform: translate(-2rem,-50%);">打赏策划(爱发电)</button>
+            <button class="sponsor" onclick="globalThis.open('https://dun.mianbaoduo.com/@vickscarlet')" style="background-color:#c69; left:50%; right:auto; transform: translate(2rem,-50%);">打赏程序(顿顿饭)</button>
         </div>
         `);
 
@@ -124,7 +178,7 @@ class App{
             <span class="title">统计</span>
             <ul id="total"></ul>
             <span style="padding:0.25rem; margin: 0.5rem 0; border: none; background: #ccc;"></span>
-            <span class="title">成就</span>
+            <span class="title">成就<button id="rank">排行榜</button></span>
             <ul id="achievements"></ul>
         `)
 
@@ -132,6 +186,9 @@ class App{
             .find('#specialthanks')
             .click(()=>this.switch('index'));
 
+        achievementPage
+            .find('#rank')
+            .click(()=>this.hint('别卷了，没有排行榜'));
         // Talent
         const talentPage = $(`
         <div id="main">
@@ -242,7 +299,7 @@ class App{
         const getBtnGroups = (name, min, max)=>{
             const group = $(`<li>${name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>`);
             const btnSub = $(`<span class="iconfont propbtn">&#xe6a5;</span>`);
-            const inputBox = $(`<input value="0">`);
+            const inputBox = $(`<input value="0" type="number" />`);
             const btnAdd = $(`<span class="iconfont propbtn">&#xe6a6;</span>`);
             group.append(btnSub);
             group.append(inputBox);
@@ -325,7 +382,7 @@ class App{
                     this.hint(`你多使用了${total() - this.#totalMax}属性点`);
                     return;
                 }
-                this.#life.restart({
+                const contents = this.#life.restart({
                     CHR: groups.CHR.get(),
                     INT: groups.INT.get(),
                     STR: groups.STR.get(),
@@ -334,7 +391,7 @@ class App{
                     TLT: Array.from(this.#talentSelected).map(({id})=>id),
                 });
                 this.switch('trajectory');
-                this.#pages.trajectory.born();
+                this.#pages.trajectory.born(contents);
                 // $(document).keydown(function(event){
                 //     if(event.which == 32 || event.which == 13){
                 //         $('#lifeTrajectory').click();
@@ -386,18 +443,15 @@ class App{
                     trajectoryPage.find('#auto').hide();
                     trajectoryPage.find('#auto2x').hide();
                     // trajectoryPage.find('#domToImage').show();
-                } else {
-                    // 如未死亡，更新数值
-                    // Update properties if not die yet
-                    const property = this.#life.getLastRecord();
-                    $("#lifeProperty").html(`
-                    <li><span>颜值</span><span>${property.CHR}</span></li>
-                    <li><span>智力</span><span>${property.INT}</span></li>
-                    <li><span>体质</span><span>${property.STR}</span></li>
-                    <li><span>家境</span><span>${property.MNY}</span></li>
-                    <li><span>快乐</span><span>${property.SPR}</span></li>
-                    `);
                 }
+                const property = this.#life.getLastRecord();
+                $("#lifeProperty").html(`
+                <li><span>颜值</span><span>${property.CHR}</span></li>
+                <li><span>智力</span><span>${property.INT}</span></li>
+                <li><span>体质</span><span>${property.STR}</span></li>
+                <li><span>家境</span><span>${property.MNY}</span></li>
+                <li><span>快乐</span><span>${property.SPR}</span></li>
+                `);
             });
         // html2canvas
         trajectoryPage
@@ -646,7 +700,15 @@ class App{
                     trajectoryPage.find('#auto2x').show();
                     this.#isEnd = false;
                 },
-                born: ()=>{
+                born: contents => {
+                    if(contents.length > 0)
+                        $('#lifeTrajectory')
+                            .append(`<li><span>初始：</span><span>${
+                                contents.map(
+                                    ({source, target}) => `天赋【${source.name}】发动：替换为天赋【${target.name}】`
+                                ).join('<br>')
+                            }</span></li>`);
+
                     trajectoryPage.find('#lifeTrajectory').trigger("click");
                 }
             },

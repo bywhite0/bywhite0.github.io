@@ -48,6 +48,14 @@
   padding: 0;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"]{
+    -moz-appearance: textfield;
+}
+
 html {
   font-family: PingFangSC, 'Noto Sans CJK SC', 'MS Yahei';
 }
@@ -134,6 +142,7 @@ body {
 }
 
 .sponsor,
+#rank,
 #specialthanks,
 #achievement {
   position: fixed;
@@ -161,6 +170,13 @@ body {
   bottom: 0;
   width: auto;
   padding: 0.5rem;
+}
+
+#rank {
+  position: absolute;
+  top: 50%;
+  right: 1.5rem;
+  transform: translateY(-50%);
 }
 
 #spthx {
@@ -218,6 +234,7 @@ body {
 }
 
 .title {
+  position: relative;
   font-size: 1.5rem;
   font-weight: 700;
   padding: 1rem;
@@ -253,6 +270,8 @@ ul#total li .achievementtitle,
   overflow: scroll;
 }
 
+#save,
+#load,
 #themeToggleBtn {
   padding: 0 0.7rem;
   width: 6.5rem;
@@ -271,6 +290,17 @@ ul#total li .achievementtitle,
   bottom: 0.5rem;
 }
 
+#save {
+  background-color:#007046;
+  color: white;
+  bottom: 6.5rem;
+}
+#load {
+  background-color: #fc5531;
+  color: white;
+  bottom: 3.5rem;
+}
+
 .head {
   display: flex;
   flex-direction: column;
@@ -286,12 +316,11 @@ ul#total li .achievementtitle,
   list-style: none;
   flex: 1;
   padding: 1rem;
-  overflow: auto;
 }
 
 .lifeProperty {
   list-style: none;
-  padding: 2rem 1rem 0.5rem 4rem;
+  padding: 2rem 1rem 0.5rem 1rem;
   display: flex;
   color: #FFFFFF;
   overflow: auto;
@@ -302,7 +331,7 @@ ul#total li .achievementtitle,
   margin: 0.1rem 2px;
   display: flex;
   flex-direction: column;
-  background-color: #393E46;
+  background-color: #8d8d8d;
   border: 1px #ccc solid;
   border-radius: 0.2rem;
   font-size: 1rem;
@@ -388,7 +417,7 @@ ul#total li .achievementtitle,
   margin: 0.5rem 1rem;
   padding: 0;
   border: 1px #9b9b9b solid;
-  background-color: #393E46;
+  background-color: #fff;
   border-radius: 4px;
   overflow: auto;
 }
@@ -397,9 +426,9 @@ ul#total li .achievementtitle,
   margin: 10px 0;
   padding: 5px 10px;
   display: flex;
-  background-color: #4a5361;
-  box-shadow: #EEEEEE 0 0 0.4rem;
-  color: #EEEEEE;
+  background-color: #fff;
+  box-shadow: #b1b1b1 0 0 0.4rem;
+  color: #1a1a1a;
   font-size: 1rem;
   position: relative;
 }
@@ -420,7 +449,7 @@ ul#total li .achievementtitle,
   flex: 1;
   display: flex;
   align-items: center;
-  background-color: #4a5361;
+  background-color: #6f6f6f;
   border-bottom: 1px solid #EEEEEE;
   box-shadow: none;
   color: #EEEEEE;
@@ -622,28 +651,58 @@ i {
   }
 }
 
-.grade0b.selected {
-  background-color: #444 !important;
+.grade0b.selected,
+.grade1b.selected,
+.grade2b.selected,
+.grade3b.selected {
   box-shadow: #bbb 0px 0px 10px;
   color: #fff;
+  overflow: hidden;
+}
+.grade0b.selected::after,
+.grade1b.selected::after,
+.grade2b.selected::after,
+.grade3b.selected::after {
+  content: '';
+  position: absolute;
+  background-color:#000;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 0 10px #000;
+  opacity: 0;
+  animation: blink 3s linear infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+    transform: translateX(-150%);
+  }
+  50% {
+    opacity: .2;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(150%);
+  }
+}
+
+.grade0b.selected {
+  background-color: #444 !important;
 }
 
 .grade1b.selected {
   background-color: #407dec !important;
-  box-shadow: #bbb 0px 0px 10px;
-  color: #fff;
 }
 
 .grade2b.selected {
   background-color: #b362e7 !important;
-  box-shadow: #bbb 0px 0px 10px;
-  color: #fff;
 }
 
 .grade3b.selected {
   background-color: #ff7f4d !important;
-  box-shadow: #bbb 0px 0px 10px;
-  color: #fff;
 }
 
 @keyframes banner-in {
