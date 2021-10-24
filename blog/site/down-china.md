@@ -55,7 +55,7 @@
 > 看来**温水煮青蛙**策略很成功~
 </details>
 <v-script>
-document.getElementById('msg').href = window.location.hostname + '/msg'
+document.getElementById('msg').href ='https://' + window.location.hostname + '/msg/index.html'
 </v-script>
 
 <v-style>h1{display:none}</v-style>
