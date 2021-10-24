@@ -53,7 +53,7 @@
 <span class="mdui-typo-title" style="margin-left:0px">鸽子窝<sub style="font-size:10px" class="sm">的二楼</sub></span>
 <div class="mdui-toolbar-spacer"></div>
 <span style="float:right" id="tms"></span>
-<a href="./birthday/?msg=生日快乐！" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">cake</i></a>
+<a href="./birthday/?name=To%20You" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">cake</i></a>
 <a href="./msg/index.html" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">forum</i></a>
 <button mdui-drawer="{target: '#player'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">album</i></button>
 </div>
@@ -71,8 +71,8 @@
 <div class="mdui-toolbar-spacer"></div>
 <button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer-close><i class="mdui-icon material-icons">close</i></button>
 </div>
-<a class="mdui-list-item mdui-ripple" href="./bookcase/index.html"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">collections_bookmark</i></div><div class="mdui-list-item-content">书柜</div></a>
-<div class="mdui-list-item"><img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/bywhite0/bywhite0.github.io?label=%E5%A4%A7%E5%B0%8F&logo=github&style=social" /></div>
+<div class="mdui-list-item mdui-ripple" onclick="window.location.assign('./blog/')"><div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">free_breakfast</i></div><div class="mdui-list-item-content">部落格</div></div>
+<div class="mdui-list-item"><img alt="GitHub仓库大小" src="https://img.shields.io/github/repo-size/bywhite0/bywhite0.github.io?label=%E5%A4%A7%E5%B0%8F&logo=github&style=social" /></div>
 <div class="mdui-list-item">本次渲染用时<span id="LdT"></span>ms</div>
 <script>
 window.onload = function() {$("#LdT").html(window.performance.timing.domComplete - window.performance.timing.domLoading)}
@@ -220,6 +220,10 @@ var stage = document.getElementById("app");
 stage.onload = function(){
 mdui.$("*").mutation()
 }
+
+if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+      }
 </script>
 <script src="./assets/index.js"></script>
 </body>

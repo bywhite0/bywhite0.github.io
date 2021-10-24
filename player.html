@@ -5,6 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>留声机</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+      }
+</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
 <link rel="stylesheet" href="assets/iconfont.css">
@@ -19,8 +24,8 @@
 	<audio id="song" class="music-player__audio" preload="metadata"></audio>
 	<!-- 播放器主体 -->
 	<div class="music-player__main">
-		<!-- 模糊背景
-		<div class="music-player__blur"></div>-->
+		<!-- 模糊背景 -->
+		<div class="music-player__blur"></div>
 		<!-- 唱片 -->
 		<div class="music-player__disc" src="./assets/images/player/cd.png">
 			<!-- 唱片图片 -->

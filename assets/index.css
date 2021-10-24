@@ -1,10 +1,10 @@
 .progress-ti{padding-bottom:6px;padding-top: 10px;margin-bottom:5px;line-height:1.5;}
 .sm{opacity:.7}
 
-#drawer *,.mdui-toolbar *,.mdui-dialog *,.mdui-fab-wrapper i,.music__list__item.play,.music__info .music__info--title,.music__info .music__info--artist,.player-control__btn,.player__song--timeProgess{color:#000 !important}
+/*#drawer *,.mdui-toolbar *,.mdui-dialog *,.mdui-fab-wrapper i,.music__list__item.play,.music__info .music__info--title,.music__info .music__info--artist,.player-control__btn,.player__song--timeProgess{color:#000 !important}
 #drawer,#homebar,#player .mdui-toolbar,.mdui-fab-wrapper button,.mdui-dialog{
 background-image: linear-gradient(to right, #fff1eb 0%, #ace0f9 100%) !important;
-}
+}*/
 .mdui-panel-item-body{padding:0 16px !important}
 .music-player__list{background-color:#0000}
 .mdui-progress-determinate{background-color:#ace0f9 !important}
