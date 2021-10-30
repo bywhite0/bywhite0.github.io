@@ -1,6 +1,7 @@
 if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js')
       };
+Fancybox.bind('img');
 new Docute({
         target: '#app',
 darkThemeToggler: true,
@@ -48,6 +49,15 @@ sidebar: [
         {
           title: '二楼装修记',
           link: '/2f'
+        }
+     ]
+    },
+    {
+      title: '干货',
+      children: [
+        {
+          title: '初中英语语法规则速查速记',
+          link: '/m/eng'
         }
      ]
     },

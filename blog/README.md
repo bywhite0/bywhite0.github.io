@@ -12,8 +12,8 @@
 </details>
 
 ---
-### 书柜都有些什么呢？
-怎么说呢…主要是一些公告和鸽子窝的装修记录。<Badge type="tip">二楼的还没写呢，催更催更！</Badge><br />另外有一部禁书([《完全自杀手册》](/CSM))。
+### 部落格都有些什么呢？
+怎么说呢…主要是公告、一些干货和装修记录。<Badge type="tip">二楼的还没写呢，催更催更！</Badge><br />另外书柜有一部禁书([《完全自杀手册》](/CSM))。
 
 <details>
 <summary><span style="position:relative;top:4px"><Badge type="danger">⚠️重要提醒</Badge></span></summary><Note type="danger" label="⚠️注意"><br />
@@ -30,11 +30,6 @@
 </Note>
 </details>
 
-偶尔还会写写日记什么的（<Badge type="success">不会让人误解的那种</Badge>
+偶尔还会记些碎碎念什么的（<Badge type="success">不会让人误解的那种</Badge>
 
-另外有一张待办，你可以在上面了解我的“装修计划”。<Badge>大雾</Badge><br />
-当然，有能力的欢迎来加入~
-
-- 可以Fork这个仓库，修改代码后提交PR~
-- 也可以…直接把你的想法提个Issue或者[使用邮箱](mailto:bywhite@vip.qq.com?subject=[网站装修]我的想法)~
-- 如果你已经实现了你的想法，但你没有GitHub账号，可以[使用邮箱](mailto:bywhite@vip.qq.com?subject=[网站装修]我的想法[附实例])并把你的实例上传到附件~
+另外有一张待办，你可以在上面了解我的“装修计划”。<Badge>大雾</Badge>
