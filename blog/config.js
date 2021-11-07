@@ -11,8 +11,8 @@ nav: [
       link: '/'
     },
     {
-      title: '待办',
-      link: '/todo'
+      title: 'MIDI集',
+      link: '/music/midi'
     },
     {
       title: 'GitHub',
@@ -22,6 +22,10 @@ nav: [
 footer: `<a href="https://bywhite.wodemo.net">鸽子窝</a>｜<a href="https://bywhite0.github.io">二楼</a>｜<a href="https://bywhite.vercel.app">平行世界的二楼</a>｜<a href="https://github.com/bywhite0/bywhite0.github.io">二楼仓库</a>`,
 sidebar: [
     // A sidebar item, with child links
+    {
+      title: '待办',
+      link: '/todo',
+    },
     {
       title: '公告',
       children: [
