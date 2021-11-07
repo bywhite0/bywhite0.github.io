@@ -56,6 +56,10 @@ sidebar: [
       title: '干货',
       children: [
         {
+          title: 'MIDI集',
+          link: '/music/midi'
+        },
+        {
           title: '初中英语语法规则速查速记',
           link: '/m/eng'
         }
