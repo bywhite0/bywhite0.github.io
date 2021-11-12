@@ -1,53 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>鸽子窝の留言板</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSW769DFSB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-BSW769DFSB');
-</script>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>鸽子窝の留言板</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSW769DFSB"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-BSW769DFSB');
+	</script>
 </head>
+
 <body>
-<script src="//cdn.jsdelivr.net/npm/@waline/client"></script>
-<div id="waline"></div>
-<script>
-const locale = {
-placeholder: '来留个言吧~',
-sofa: '来留个言吧~',
-comment: '留言',
-admin: '站长'
-}
-</script>
-<script>
-    Waline({
-      el: '#waline',
-      serverURL: 'https://byw0.deta.dev',
-emoji: [
-'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/热词系列一',
-'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
-'https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq',
-'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/洛天依',
-'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/2020拜年祭',
-'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/2233白色情人节表情包',
-'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/泠鸢yousa',
-'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/阴阳师·平安物语',
-'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/原神',
-'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/时光代理人',
-],
-dark: 'auto',
-locale,
-meta: ['nick'],
-requiredMeta: ['nick'],
-path: 'https://bywhite0.github.io/msg',
-    });
-  </script>
+	<script src="//cdn.jsdelivr.net/npm/@waline/client"></script>
+	<div id="waline"></div>
+	<script>
+		const locale = {
+			placeholder: '来留个言吧~',
+			sofa: '来留个言吧~',
+			comment: '留言',
+			admin: '站长'
+		}
+	</script>
+	<script>
+		Waline({
+			el: '#waline',
+			serverURL: 'https://byw0.deta.dev',
+			emoji: ['https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/热词系列一','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/洛天依','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/2020拜年祭','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/2233白色情人节表情包','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/泠鸢yousa','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/阴阳师·平安物语','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/原神','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/时光代理人', ],
+			dark: 'auto',
+			locale,
+			meta: ['nick'],
+			requiredMeta: ['nick'],
+			path: 'https://bywhite0.github.io/msg',
+		});
+	</script>
 </body>
+
 </html>
