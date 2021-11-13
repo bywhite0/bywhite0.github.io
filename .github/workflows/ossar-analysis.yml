@@ -42,15 +42,6 @@ jobs:
       uses: github/codeql-action/upload-sarif@v1
       with:
         sarif_file: ${{ steps.ossar.outputs.sarifFile }}
-    - name: Commit file
-      uses: swinton/commit@v2.x
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        files: |
-          ./.gdn/msca.sarif
-        commit-message: Upload OSSAR results
-        ref: refs/heads/main
     - name: Codecov
       uses: codecov/codecov-action@v2
       with:
