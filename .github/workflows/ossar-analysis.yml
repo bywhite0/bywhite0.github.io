@@ -48,7 +48,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         files: |
-          ./gdn/msca.sarif
+          ./.gdn/msca.sarif
         commit-message: Upload OSSAR results
         ref: refs/heads/main
     - name: Codecov
