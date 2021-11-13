@@ -5,24 +5,24 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta name="google-site-verification" content="kK0Rf4O5Ass_sNd3gosFD4LKMjR-ufkq_2EwZE56e0M" />
-	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/heads/icon-apple.jpg">
-	<meta content="yes" name="apple-touch-fullscreen">
-	<meta content="yes" name="apple-mobile-web-app-capable">
-	<link rel="shortcut icon" href="https://q1.qlogo.cn/g?b=qq&nk=3240558932&s=640&t=1" type="image/x-icon" />
+	<link rel="apple-touch-icon" sizes="180x180" href="pwa/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="pwa/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="pwa/favicon-16x16.png">
+	<link rel="manifest" href="pwa/site.webmanifest">
+	<link rel="mask-icon" href="pwa/safari-pinned-tab.svg" color="#eecbdb">
+	<meta name="apple-mobile-web-app-title" content="鸽子窝">
+	<meta name="application-name" content="鸽子窝">
+	<meta name="msapplication-TileColor" content="#eecbdb">
+	<meta name="msapplication-TileImage" content="pwa/mstile-144x144.png">
+	<meta name="theme-color" content="#eecbdb">
+	<meta name="apple-touch-fullscreen" content="yes">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="white">
+	<link rel="shortcut icon" href="pwa/apple-touch-icon.png" type="image/x-icon" />
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/eruda-timing@1.1.3/eruda-timing.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/eruda-dom@1.1.0/eruda-dom.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/eruda-memory@1.1.1/eruda-memory.js"></script>
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSW769DFSB"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'G-BSW769DFSB');
-	</script>
 </head>
 
 <body class="mdui-theme-primary-teal mdui-theme-accent-teal mdui-theme-layout-auto mdui-theme-color">
@@ -31,8 +31,8 @@
 	<link rel="stylesheet" href="assets/index.css" />
 	<link rel="stylesheet" href="assets/iconfont.css" />
 	<link rel="stylesheet" href="assets/player.css" />
-	<title>白影的鸽子窝</title>
-	<script src="https://cdn.jsdelivr.net/npm/vue@3.2.12/dist/vue.global.js"></script>
+	<title>鸽子窝</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@3.2.13/dist/vue.global.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue-router@4.0.11/dist/vue-router.global.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
 	<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
@@ -57,19 +57,12 @@
 			<button class="mdui-btn mdui-ripple" id="chkCmd" mdui-dialog-confirm>确定</button>
 		</div>
 	</div>
-	<div id="fixed_player" class="mdui-dialog">
-		<div class="mdui-toolbar">
-			<span class="mdui-typo-title">播放器</span>
-			<div class="mdui-toolbar-spacer"></div>
-			<button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-dialog-close><i class="mdui-icon material-icons">close</i></button>
-		</div><iframe src="./aplayer/player.html" style="width:100%;height:100%;border:0px;background-color:#0000;"></iframe>
-	</div>
-	<div class="mdui-toolbar mdui-color-theme" id="homebar">
+	<div class="fix mdui-toolbar mdui-color-theme" id="homebar" style="z-index:10">
 		<button mdui-drawer="{target: '#drawer'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">menu</i></button>
 		<span class="mdui-typo-title" style="margin-left:0px">鸽子窝<sub style="font-size:10px" class="sm">的二楼</sub></span>
 		<div class="mdui-toolbar-spacer"></div>
 		<span style="float:right" id="tms"></span>
-		<a href="./birthday/?name=To%20You" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">cake</i></a>
+		<a href="./birthday/?name=To%20You:" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">cake</i></a>
 		<a href="./msg/index.html" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">forum</i></a>
 		<button mdui-drawer="{target: '#player'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">album</i></button>
 	</div>
@@ -80,7 +73,7 @@
 			</router-view>
 		</div>
 		<div class="mdui-drawer" id="drawer">
-			<div class="mdui-toolbar">
+			<div class="fix top mdui-toolbar mdui-color-theme">
 				<span class="mdui-typo-title">菜单</span>
 				<div class="mdui-toolbar-spacer"></div>
 				<button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer-close><i class="mdui-icon material-icons">close</i></button>
@@ -110,6 +103,15 @@
 										document.write(+m)
 									</script>天</span></div>
 						</li>
+						<li class="mdui-list-item">
+							<div class="mdui-list-item-title"><span class="mdui-list-item-content">新年还有<script>
+										var a = new Date("01/01/2022").getTime(),
+											n = new Date().getTime(),
+											t = a - n,
+											m = Math.floor(t / (1000 * 60 * 60 * 24));
+										document.write(+m)
+									</script>天</span></div>
+						</li>
 						<li class="mdui-list-item mdui-hidden" id="love">
 							<div class="mdui-list-item-title"><span class="mdui-list-item-content">他们相恋了<script>
 										var a = new Date("07/21/2021").getTime(),
@@ -123,11 +125,11 @@
 				</li>
 				<div class="mdui-subheader"><i class=" mdui-icon material-icons ">public</i>站点</div>
 				<router-link to="/" onclick="rf()" class="mdui-list-item mdui-ripple " mdui-drawer-close>
-					<div class="mdui-list-item-avatar" style="background-color:#0000"><img src="http://q1.qlogo.cn/g?b=qq&nk=3240558932&s=640&t=1" id="loveAvatar" class="mdui-hidden"></div>
+					<div class="mdui-list-item-avatar" style="background-color:#0000"></div>
 					<div class="mdui-list-item-content">鸽子窝</div>
 				</router-link>
-				<a href="https://bywforu.wodemo.net" class="mdui-list-item mdui-ripple">
-					<div class="mdui-list-item-avatar" style="background-color:#0000"><img src="http://q1.qlogo.cn/g?b=qq&nk=1842160491&s=640&t=1" id="loveAvatar" class="mdui-hidden"></div>
+				<a href="https://bywforu.wodemo.net" class="mdui-list-item mdui-ripple mdui-hidden">
+					<div class="mdui-list-item-avatar" style="background-color:#0000"></div>
 					<div class="mdui-list-item-content">时空隧道<small class="sm" style="font-size:10px">(未开工)</small></div>
 				</a>
 				<a href="https://github.com/bywhite0/bywhite0.github.io" target="_blank" class="mdui-list-item mdui-ripple">
@@ -137,12 +139,6 @@
 						</svg></div>
 					<div class="mdui-list-item-content">去GitHub点个<i class="mdui-icon material-icons" style="font-size:16px !important">star_border</i></div>
 				</a>
-				<div class="mdui-subheader"><i class="mdui-icon material-icons">play_circle_outline</i>播放器</div>
-				<div class="mdui-list-item mdui-ripple mdui-hidden" mdui-dialog="{target: '#fixed_player'}" mdui-drawer-close>
-					<div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">play_circle_outline</i></div>
-					<div class="mdui-list-item-content">点击打开播放器</div>
-				</div>
-				<div class="mdui-list-item">正在修复，暂不可用</div>
 				<div class="mdui-subheader"><i class="mdui-icon material-icons">widgets</i>小组件</div>
 				<li class="mdui-collapse-item">
 					<div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
@@ -209,7 +205,7 @@
 						<div class="mdui-list-item-content">游戏</div><i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
 					</div>
 					<ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
-						<a href="./LiveRe/view/index.html" class="mdui-list-item mdui-ripple">
+						<a href="https://liferestart.syaro.io/view" class="mdui-list-item mdui-ripple">
 							<div class="mdui-list-item-content">人生重开模拟器<div class="mdui-list-item-text">这垃圾人生一秒也不想呆了</div>
 							</div>
 						</a></ul>
@@ -270,12 +266,12 @@
 			</div>
 		</div>
 	</div>
-	<div class="mdui-drawer mdui-drawer-right" id="player" style="background-color:#0000 !important;box-shadow:#0000 0px 0px 0px !important;overflow-y:auto;">
-		<div class="mdui-toolbar mdui-color-theme">
+	<div class="mdui-drawer mdui-drawer-right" id="player" style="box-shadow:#0000 0px 0px 0px !important;overflow:hidden;overflow-y:scroll;">
+		<div class="fix top mdui-toolbar mdui-color-theme">
 			<button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer-close><i class="mdui-icon material-icons">chevron_right</i></button>
 			<span class="mdui-typo-title" style="margin-left:0px;text-align:center !important;">留声机</span>
 		</div>
-		<iframe id="inner_player" src="./player.html" style="width:100%;height:100%;border:0px;overflow-x:hidden;overflow-y:auto;background-color:#0000;"></iframe>
+		<iframe id="inner_player" src="player.html" style="width:100%;height:100%;border:0px;overflow:hidden;overflow-y:clip;background-color:#0000;"></iframe>
 	</div>
 	</div>
 	<script src="./vue/homepage.js"></script>
@@ -322,6 +318,16 @@
 		if ('serviceWorker' in navigator) {
 			navigator.serviceWorker.register('/sw.js')
 		}
+	</script>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSW769DFSB"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'G-BSW769DFSB');
 	</script>
 	<script src="./assets/index.js"></script>
 </body>

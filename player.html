@@ -11,14 +11,13 @@
 			navigator.serviceWorker.register('/sw.js')
 		}
 	</script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
-	<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
 	<link rel="stylesheet" href="assets/iconfont.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium">
 	<link rel="stylesheet" href="assets/player.css" />
 	<link rel="stylesheet" href="assets/index.css" />
 </head>
 
-<body id="drawer">
+<body id="drawer" style="overflow: hidden;overflow-y: clip; margin: 0px">
 	<!-- 播放器 -->
 	<div class="music-player">
 		<!-- audio标签 -->
@@ -66,15 +65,17 @@
 				</div>
 			</div>
 		</div>
-		<!-- 歌曲列表 -->
-		<div class="music-player__list">
-			<ul class="music__list_content mdui-list">
-				<!-- <li class="music__list__item play">123</li>
-			<li class="music__list__item">123</li>
-			<li class="music__list__item">123</li> -->
-			</ul>
-		</div>
 	</div>
+		<!-- 歌曲列表 -->
+		<div class="music__list__container">
+			<div class="music-player__list">
+				<ul class="music__list_content">
+					<!-- <li class="music__list__item play">123</li>
+				<li class="music__list__item">123</li>
+				<li class="music__list__item">123</li> -->
+				</ul>
+			</div>
+		</div>
 	<script src="assets/utill.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 	<script src="assets/player.js"></script>

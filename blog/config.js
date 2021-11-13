@@ -11,15 +11,11 @@ nav: [
       link: '/'
     },
     {
-      title: 'MIDI集',
-      link: '/music/midi'
-    },
-    {
       title: 'GitHub',
       link: 'https://github.com/bywhite0/bywhite0.github.io'
     }
   ],
-footer: `<a href="https://bywhite.wodemo.net">鸽子窝</a>｜<a href="https://bywhite0.github.io">二楼</a>｜<a href="https://bywhite.vercel.app">平行世界的二楼</a>｜<a href="https://github.com/bywhite0/bywhite0.github.io">二楼仓库</a>`,
+footer: `<a href="https://bywhite0.github.io">鸽子窝的二楼</a>｜<a href="https://bywhite.vercel.app">平行世界的二楼</a>｜<a href="https://github.com/bywhite0/bywhite0.github.io">二楼仓库</a>`,
 sidebar: [
     // A sidebar item, with child links
     {
@@ -59,10 +55,6 @@ sidebar: [
     {
       title: '干货',
       children: [
-        {
-          title: 'MIDI集',
-          link: '/music/midi'
-        },
         {
           title: '初中英语语法规则速查速记',
           link: '/m/eng'
