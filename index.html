@@ -13,7 +13,7 @@
 	<meta name="apple-mobile-web-app-title" content="鸽子窝">
 	<meta name="application-name" content="鸽子窝">
 	<meta name="msapplication-TileColor" content="#eecbdb">
-	<meta name="msapplication-TileImage" content="pwa/mstile-144x144.png">
+	<meta name="msapplication-TileImage" content="mstile-310x310.png">
 	<meta name="theme-color" content="#eecbdb">
 	<meta name="apple-touch-fullscreen" content="yes">
 	<meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,7 +31,7 @@
 	<link rel="stylesheet" href="assets/index.css" />
 	<link rel="stylesheet" href="assets/iconfont.css" />
 	<link rel="stylesheet" href="assets/player.css" />
-	<title>鸽子窝</title>
+	<title>白影的鸽子窝</title>
 	<script src="https://cdn.jsdelivr.net/npm/vue@3.2.13/dist/vue.global.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/vue-router@4.0.11/dist/vue-router.global.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
@@ -57,14 +57,14 @@
 			<button class="mdui-btn mdui-ripple" id="chkCmd" mdui-dialog-confirm>确定</button>
 		</div>
 	</div>
-	<div class="fix mdui-toolbar mdui-color-theme" id="homebar" style="z-index:10">
+	<div class="fix mdui-toolbar mdui-color-theme" id="homebar" style="z-index:9998">
 		<button mdui-drawer="{target: '#drawer'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">menu</i></button>
 		<span class="mdui-typo-title" style="margin-left:0px">鸽子窝<sub style="font-size:10px" class="sm">的二楼</sub></span>
 		<div class="mdui-toolbar-spacer"></div>
 		<span style="float:right" id="tms"></span>
 		<a href="./birthday/?name=To%20You:" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">cake</i></a>
 		<a href="./msg/index.html" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">forum</i></a>
-		<button mdui-drawer="{target: '#player'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">album</i></button>
+		<button mdui-drawer="{target: '#player'}" class="mdui-btn mdui-btn-icon mdui-ripple" onclick="new mdui.Drawer('#drawer').close()"><i class="mdui-icon material-icons">album</i></button>
 	</div>
 	<div id="app" style="height:100%">
 		<div style="height:100%">
@@ -73,10 +73,7 @@
 			</router-view>
 		</div>
 		<div class="mdui-drawer" id="drawer">
-			<div class="fix top mdui-toolbar mdui-color-theme">
-				<span class="mdui-typo-title">菜单</span>
-				<div class="mdui-toolbar-spacer"></div>
-				<button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer-close><i class="mdui-icon material-icons">close</i></button>
+			<div class="fix mdui-toolbar">
 			</div>
 			<div class="mdui-list-item mdui-ripple" onclick="window.location.assign('./blog/')">
 				<div class="mdui-list-item-avatar"><i class="mdui-list-item-icon mdui-icon material-icons">free_breakfast</i></div>
@@ -266,11 +263,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="mdui-drawer mdui-drawer-right" id="player" style="box-shadow:#0000 0px 0px 0px !important;overflow:hidden;overflow-y:scroll;">
-		<div class="fix top mdui-toolbar mdui-color-theme">
-			<button class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" mdui-drawer-close><i class="mdui-icon material-icons">chevron_right</i></button>
-			<span class="mdui-typo-title" style="margin-left:0px;text-align:center !important;">留声机</span>
-		</div>
+	<div class="mdui-drawer mdui-drawer-right" id="player" style="box-shadow:#0000 0px 0px 0px !important;overflow:hidden;overflow-y:scroll;z-index: 9999;">
 		<iframe id="inner_player" src="player.html" style="width:100%;height:100%;border:0px;overflow:hidden;overflow-y:clip;background-color:#0000;"></iframe>
 	</div>
 	</div>
