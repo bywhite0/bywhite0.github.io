@@ -4,8 +4,8 @@
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>鸽子窝の留言板</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>鸽子窝の评论区</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maxinum-scale=1, user-scalable=0">
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 	<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSW769DFSB"></script>
 	<script>
@@ -19,26 +19,52 @@
 </head>
 
 <body>
-	<script src="//cdn.jsdelivr.net/npm/@waline/client"></script>
-	<div id="waline"></div>
-	<script>
-		const locale = {
-			placeholder: '来留个言吧~',
-			sofa: '来留个言吧~',
-			comment: '留言',
-			admin: '站长'
+	<style>
+		@media (prefers-color-scheme: dark){
+			body{
+				background-color: #403e3e
+			}
+			.commentTrigger{
+			background-color: #403e3e !important;
+			}
+			.info *,ul *{
+				color: #fff !important;
+			}
+			.MiniValine .vpage .more{
+			background: #21232F
+			}
+			img{
+			filter: brightness(40%)
+			}
+			.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
+			background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
+			}
+			.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
+			background: rgba(0,0,0,0.9)
+			}
+			.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
+			background: #282c34
+			border: 1px solid #282c34
+			}
+			.MiniValine .vinputs-area .vextra-area .vsmile-icons{
+			background: transparent;
+			}
 		}
-	</script>
+	</style>
+	<script src="//cdn.jsdelivr.net/npm/minivaline@5/dist/MiniValine.min.js"></script>
+	<div id="wl"></div>
 	<script>
-		Waline({
-			el: '#waline',
-			serverURL: 'https://byw0.deta.dev',
-			emoji: ['https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/热词系列一','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/洛天依','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/2020拜年祭','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/2233白色情人节表情包','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/泠鸢yousa','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/阴阳师·平安物语','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/原神','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@latest/src/时光代理人', ],
-			dark: 'auto',
-			locale,
-			meta: ['nick'],
-			requiredMeta: ['nick'],
-			path: 'https://bywhite0.github.io/msg',
+	new MiniValine({
+		el: '#wl',
+		backend: 'waline',
+		serverURLs: 'https://bywl.vercel.app',
+		mode: 'DesertsP',
+		placeholder: '来发评论吧~',
+		avatarUrl: 'https://gravatar.loli.net/avatar',
+		lang: 'zh-CN',
+		barrager: 2,
+		emoticonUrl: ['https://cdn.jsdelivr.net/gh/MiniValine/bilibilis@latest', 'https://cdn.jsdelivr.net/npm/alus@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/MiniValine/imgs/funny', 'https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest', 'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/热词系列一','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/洛天依','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/2020拜年祭','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/2233白色情人节表情包','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/泠鸢yousa','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/阴阳师·平安物语','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/原神','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/时光代理人'],
+		adminEmailMd5: '21A8E05E9FD3AD02F176FC2CD1EE1100',
 		});
 	</script>
 </body>
