@@ -47,6 +47,25 @@ dialog.addEventListener('confirm.mdui.dialog', function() {
 	checkCmd();
 	checkYes()
 });
+
+var pcb = mdui.$('#pdx'),
+pd = document.getElementById('player'),
+mb = mdui.$('#mb>.mdui-icon'),
+menu = document.getElementById('drawer');
+
+pd.addEventListener('open.mdui.drawer', function() {
+	pcb.removeClass('mdui-fab-hide')
+});
+pd.addEventListener('close.mdui.drawer', function() {
+	pcb.addClass('mdui-fab-hide');
+});
+menu.addEventListener('open.mdui.drawer', function() {
+	mb.toggleClass('menu-opened')
+});
+menu.addEventListener('close.mdui.drawer', function() {
+	mb.toggleClass('menu-opened');
+});
+
 var player = new APlayer({
 	container: document.getElementById('you'),
 	lrcType: 1,

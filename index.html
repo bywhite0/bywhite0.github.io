@@ -36,6 +36,11 @@
 	<script src="https://cdn.jsdelivr.net/npm/vue-router@4.0.11/dist/vue-router.global.js"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
 	<script src="https://cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
+	<button id="pdx" class="mdui-fab mdui-fab-hide mdui-color-theme mdui-ripple top" style="position: absolute;top:0px;left:0px;margin:0;box-shadow:none" onclick="new mdui.Drawer('#player').toggle();mdui.$.hideOverlay(true)">
+		<i class="mdui-icon material-icons">
+			close
+		</i>
+	</button>
 	<div class="mdui-fab-wrapper" id="exFab" mdui-fab="{trigger:'hover'}">
 		<button class="mdui-fab mdui-ripple mdui-color-theme"><i class="mdui-icon material-icons">more_horiz</i><i class="mdui-icon mdui-fab-opened material-icons">close</i></button>
 		<div class="mdui-fab-dial">
@@ -59,13 +64,13 @@
 		</div>
 	</div>
 	<div class="fix mdui-toolbar mdui-color-theme" id="homebar" style="z-index:9998">
-		<button mdui-drawer="{target: '#drawer'}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">menu</i></button>
+		<button id="mb" class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white" onclick="new mdui.Drawer('#player').close();new mdui.Drawer('#drawer').toggle();mdui.$.hideOverlay(true)"><i class="mdui-icon material-icons" style="position: absolute;left:24px">menu</i><br /><i class="mdui-icon menu-opened material-icons" style="position: absolute;left:24px">close</i></button>
 		<span class="mdui-typo-title" style="margin-left:0px">鸽子窝<sub style="font-size:10px" class="sm">的二楼</sub></span>
 		<div class="mdui-toolbar-spacer"></div>
 		<span style="float:right" id="tms"></span>
 		<a href="./birthday/?name=To%20You:" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">cake</i></a>
 		<a href="./msg/index.html" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon material-icons">forum</i></a>
-		<button mdui-drawer="{target: '#player'}" class="mdui-btn mdui-btn-icon mdui-ripple" onclick="new mdui.Drawer('#drawer').close()"><i class="mdui-icon material-icons">album</i></button>
+		<button class="mdui-btn mdui-btn-icon mdui-ripple" onclick="new mdui.Drawer('#drawer').close();new mdui.Drawer('#player').toggle();"><i class="mdui-icon material-icons">album</i></button>
 	</div>
 	<div id="app" style="height:100%">
 		<div style="height:100%">
@@ -73,7 +78,7 @@
 				<component :is="Component" />
 			</router-view>
 		</div>
-		<div class="mdui-drawer" id="drawer">
+		<div class="mdui-drawer mdui-drawer-full-height" id="drawer">
 			<div class="fix mdui-toolbar">
 			</div>
 			<div class="mdui-list-item mdui-ripple" onclick="window.location.assign('./blog/')">
@@ -264,7 +269,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="mdui-drawer mdui-drawer-right" id="player" style="box-shadow:#0000 0px 0px 0px !important;overflow:hidden;overflow-y:scroll;z-index: 9999;">
+	<div class="mdui-drawer mdui-drawer-right" id="player" style="overflow:hidden;overflow-y:scroll;z-index: 9999;">
 		<iframe id="inner_player" src="player.html" style="width:100%;height:100%;border:0px;overflow:hidden;overflow-y:clip;background-color:#0000;"></iframe>
 	</div>
 	</div>
@@ -281,7 +286,7 @@
 			$('#tms').html(l);
 			if (l == 5) {
 				mdui.snackbar({
-					message: "在某个对话框输入ly试试~",
+					message: "在某个对话框输入yt试试~",
 					timeout: 5000,
 					position: "bottom",
 					closeOnOutsideClick: false

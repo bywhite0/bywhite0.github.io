@@ -18,8 +18,23 @@
 	opacity: .7
 }
 
-/*#drawer *,.mdui-toolbar *,.mdui-dialog *,.mdui-fab-wrapper i,.music__list__item.play,.music__info .music__info--title,.music__info .music__info--artist,.player-control__btn,.player__song--timeProgess{color:#000 !important}
-#drawer,#homebar,#player .mdui-toolbar,.mdui-fab-wrapper button,.mdui-dialog{
+#mb > .mdui-icon:not(.menu-opened) {
+  opacity: 1;
+  -webkit-transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+#mb > .mdui-icon.menu-opened {
+  -webkit-transform: translate(/*48px*/-12px,-12px);
+          transform: translate(/*48px*/-12px,-12px);
+  opacity: 0;
+  -webkit-transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);
+  transition: all .5s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: opacity, transform;
+}
+
+/*#drawer *,.mdui-toolbar *,.mdui-dialog *,#mb i,.music__list__item.play,.music__info .music__info--title,.music__info .music__info--artist,.player-control__btn,.player__song--timeProgess{color:#000 !important}
+#drawer,#homebar,#player .mdui-toolbar,#mb button,.mdui-dialog{
 background-image: linear-gradient(to right, #fff1eb 0%, #ace0f9 100%) !important;
 }*/
 .mdui-panel-item-body {
