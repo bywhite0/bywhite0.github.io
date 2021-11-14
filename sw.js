@@ -14,5 +14,5 @@ const matchCb = ({ url, event }) => {
 
 workbox.routing.registerRoute(
   matchCb,
-  workbox.strategies.networkFirst()
+  workbox.strategies.cacheFirst()
 )
