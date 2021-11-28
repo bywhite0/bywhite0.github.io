@@ -64,6 +64,7 @@ menu.addEventListener('open.mdui.drawer', function() {
 });
 menu.addEventListener('close.mdui.drawer', function() {
 	mb.toggleClass('menu-opened');
+	mdui.$.hideOverlay(true)
 });
 
 var player = new APlayer({
