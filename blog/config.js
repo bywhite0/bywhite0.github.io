@@ -22,7 +22,6 @@ footer: `<a href="https://bywhite0.github.io">鸽子窝的二楼</a>｜<a href="
 			mode: 'DesertsP',
 			placeholder: '来发评论吧~',
 			avatarUrl: 'https://gravatar.loli.net/avatar',
-			barrager: 2,
 			emoticonUrl: ['https://cdn.jsdelivr.net/gh/MiniValine/bilibilis@latest', 'https://cdn.jsdelivr.net/npm/alus@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/MiniValine/imgs/funny', 'https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest', 'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/热词系列一','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/洛天依','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/2020拜年祭','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/2233白色情人节表情包','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/泠鸢yousa','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/阴阳师·平安物语','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/原神','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/时光代理人', ]
 		});</v-script>
 	`,
