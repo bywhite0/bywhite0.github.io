@@ -35,6 +35,10 @@ sidebar: [
       title: '公告',
       children: [
         {
+          title: '网站正式启用新域名',
+          link: '/site/new-domain'
+        },
+        {
           title: '为什么网站在中国大陆无法访问？',
           link: '/site/down-china'
         },

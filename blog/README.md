@@ -5,6 +5,7 @@
 <details>
 <summary>网站公告:</summary>
 
+[网站正式启用新域名](/site/new-domain)(2022.01.09)<br />
 [为什么网站在中国大陆无法访问？](/site/down-china)(2021.10.22)<br />
 [《天气简报》更新调整公告](/weather)(2021.10.11)<br />
 [关于网站暂停新内容更新的通知](/site/paused)(2021.10.08)
