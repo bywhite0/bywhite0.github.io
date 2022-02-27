@@ -1,72 +1,64 @@
 <!DOCTYPE html>
 <html>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>鸽子窝の评论区</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maxinum-scale=1, user-scalable=0">
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSW769DFSB"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('js', new Date());
+			gtag('config', 'G-BSW769DFSB');
+		</script>
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
+		<style>
+			a {
+				color: rgb(64,158,255);
+				text-decoration: none
+			}
+		</style>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+		<script defer src="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.js"></script>
+		<script defer src="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"></script>
+	</head>
 
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>鸽子窝の评论区</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, maxinum-scale=1, user-scalable=0">
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-BSW769DFSB"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
+	<body style="padding-top:128px">
+		<div class="mdui-appbar mdui-appbar-fixed">
+			<div class="mdui-toolbar mdui-color-teal">
+				<a href="/" class="mdui-btn mdui-btn-icon mdui-ripple" style="z-index:2"><i class="mdui-icon material-icons">home</i></a>
+				<span class="mdui-center mdui-typo-title" style="position:absolute;width:100%;text-align:center;z-index:1">评论区</span>
+			</div>
+			<div class="mdui-tab mdui-color-teal" mdui-tab>
+				<a href="#twikoo" class="mdui-ripple">Twikoo</a>
+				<a href="#waline" class="mdui-ripple">Waline</a>
+			</div>
+		</div>
+		<script src="//cdn.jsdelivr.net/npm/mdui@1.0.2/dist/js/mdui.min.js"></script>
+		
+		<div class="mdui-container">
+			<div id="twikoo"></div>
+			<div id="waline"></div>
+		</div>
+		
+		<script src="//cdn.jsdelivr.net/npm/twikoo@1.4.18/dist/twikoo.min.js"></script>
+		<script>
+			twikoo.init({
+				envId: 'https://t.bywht.ml',
+				el: '#twikoo'
+			})
+		</script>
 
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'G-BSW769DFSB');
-	</script>
-</head>
-
-<body>
-	<style>
-		@media (prefers-color-scheme: dark){
-			body{
-				background-color: #403e3e
-			}
-			.commentTrigger{
-			background-color: #403e3e !important;
-			}
-			.info *,ul *{
-				color: #fff !important;
-			}
-			.MiniValine .vpage .more{
-			background: #21232F
-			}
-			img{
-			filter: brightness(40%)
-			}
-			.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:before{
-			background: linear-gradient(180deg, rgba(246,246,246,0), rgba(0,0,0,0.9))
-			}
-			.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment.expand:after{
-			background: rgba(0,0,0,0.9)
-			}
-			.MiniValine .vlist .vcard .vcomment-body .text-wrapper .vcomment pre{
-			background: #282c34
-			border: 1px solid #282c34
-			}
-			.MiniValine .vinputs-area .vextra-area .vsmile-icons{
-			background: transparent;
-			}
-		}
-	</style>
-	<script src="//cdn.jsdelivr.net/npm/minivaline@5/dist/MiniValine.min.js"></script>
-	<div id="wl"></div>
-	<script>
-	new MiniValine({
-		el: '#wl',
-		backend: 'waline',
-		serverURLs: 'https://wl.bywht.ml',
-		mode: 'DesertsP',
-		placeholder: '来发评论吧~',
-		avatarUrl: 'https://gravatar.loli.net/avatar',
-		lang: 'zh-CN',
-		barrager: 2,
-		emoticonUrl: ['https://cdn.jsdelivr.net/gh/MiniValine/bilibilis@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/MiniValine/imgs/funny', 'https://cdn.jsdelivr.net/gh/MiniValine/tieba@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/twemoji@latest', 'https://cdn.jsdelivr.net/gh/MiniValine/weibo@latest', 'https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/热词系列一','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/洛天依','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/2020拜年祭','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/干物妹！小埋','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/泠鸢yousa','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/阴阳师·平安物语','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/原神','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/嘉然今天吃什么'],
-		adminEmailMd5: '21A8E05E9FD3AD02F176FC2CD1EE1100',
-		});
-	</script>
-</body>
-
+		<script src="//cdn.jsdelivr.net/npm/@waline/client"></script>
+		<script>
+			new Waline({
+				dark: 'auto',
+				el: '#waline',
+				serverURL: 'https://wl.bywht.ml',
+				emoji: ['https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/热词系列一','https://cdn.jsdelivr.net/gh/bywhite0/image/emoticon/funny','https://cdn.jsdelivr.net/gh/walinejs/emojis@1.0.0/qq','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/2020拜年祭','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/中国绊爱2nd纪念','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/泠鸢yousa','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/EveOneCat','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/EveOneCat2','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/原神','https://cdn.jsdelivr.net/gh/lrhtony/BiliEmoji@master/src/嘉然今天吃什么'],
+			});
+		</script>
+	</body>
 </html>
