@@ -16,9 +16,112 @@
 		</script>
 		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/mdui@1.0.2/dist/css/mdui.min.css" />
 		<style>
+			/* Twikoo样式配置 */
 			a {
-				color: rgb(64,158,255);
+				color: #009688;
 				text-decoration: none
+			}
+			:root {
+				--tk-white: #fff;
+				--tk-green: #009688;
+				--tk-none: rgba(0,0,0,0);
+				--tk-gray: #999999;
+			}
+			@media (prefers-color-scheme: light){
+				--tk-fontcolor: #000;
+				--tk-background: #fff;
+				--tk-maskbg: rgba(255, 255, 255, 0.6);
+				--tk-navbg: rgba(255, 255, 255, 0.9);;
+				--tk-hovertext: #286dea;
+				--tk-ahoverbg: #F7F7FA;
+				--tk-lighttext: #ef794f;
+				--tk-secondtext: rgba(0, 0, 0, 0.6);
+				--tk-card-btn-bg: #F7F7FA;
+				--tk-post-blockquote-bg: #f2f5f7;
+				--tk-sceondbg: #F7F7FA;
+			}
+			@media (prefers-color-scheme: dark){
+				--tk-fontcolor: #fff;
+				--tk-background: #1e1e1e;
+				--tk-maskbg: rgba(0,0,0, 0.6);
+				--tk-navbg: rgba(0,0,0, 0.9);
+				--tk-hovertext: #286dea;
+				--tk-ahoverbg: #fff;
+				--tk-lighttext: #f2b94b;
+				--tk-secondtext: rgba(255, 255, 255, 0.6);
+				--tk-card-btn-bg: #3f3f3f;
+				--tk-post-blockquote-bg: #000;
+				--tk-sceondbg: #252627;
+			}
+			/* 头像圆角 */
+			img.tk-avatar-img{
+				border-radius:24px !important;
+			}
+			div.tk-avatar.tk-has-avatar{
+				background:rgba(0,0,0,0)!important;
+			}
+
+			/* 评论 */
+			
+			/* 按钮 */
+			#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-title >span > span.tk-icon svg {
+				fill:var(--tk-green);
+			}
+
+			/* 评论数量字号 */
+			#twikoo > div.tk-comments > div.tk-comments-container > div.tk-comments-title > span:nth-child(1){
+				visibility: hidden!important;
+			}
+
+			/* 加载时背景颜色 */
+			.el-loading-mask{
+				background-color: var(--tk-background)!important;
+			}
+
+			/* 评论标签圆角 */
+			.tk-tag-green, .tk-tag-red, .tk-tag-yellow{
+				border-radius: 12px!important;
+				border: 0px !important;
+			}
+
+			@media (prefers-color-scheme: dark){
+				 .tk-tag-green{
+					background-color: #67c23a21!important;
+				}
+			}
+
+			/* 预览按钮 */
+			.el-button{
+				background: var(--tk-card-btn-bg)!important;
+				border: 0px solid var(--tk-green)!important;
+				color: var(--tk-fontcolor)!important;
+			}
+			.el-button:hover{
+				background: var(--tk-green)!important;
+				color: var(--tk-white)!important;
+			}
+
+			/* 发送按钮正常状态 */
+			.el-button--primary{
+				background-color: var(--tk-green)!important;
+				border-color: var(--tk-green)!important;
+				color: var(--tk-white)!important;
+			}
+
+			/* 发送按钮禁用状态 */
+			.el-button--primary.is-disabled, .el-button--primary.is-disabled:active, .el-button--primary.is-disabled:focus, .el-button--primary.is-disabled:hover{
+				opacity: 0.4;
+			}
+
+			/* 更多评论的渐变遮罩 */
+			[data-theme=dark] .tk-expand{
+				background: linear-gradient(rgba(29, 31, 32,0), rgba(29, 31, 32,1))!important;
+				color: var(--tk-fontcolor);
+			}
+
+			/* 评论时间 */
+			.tk-time {
+				color: var(--tk-gray);
 			}
 		</style>
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
@@ -26,7 +129,7 @@
 		<script defer src="//cdn.jsdelivr.net/npm/katex@0.12.0/dist/contrib/auto-render.min.js"></script>
 	</head>
 
-	<body style="padding-top:128px">
+	<body style="padding-top:128px" class="mdui-theme-primary-teal mdui-theme-layout-auto">
 		<div class="mdui-appbar mdui-appbar-fixed">
 			<div class="mdui-toolbar mdui-color-teal">
 				<a href="/" class="mdui-btn mdui-btn-icon mdui-ripple" style="z-index:2"><i class="mdui-icon material-icons">home</i></a>
